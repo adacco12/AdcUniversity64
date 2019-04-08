@@ -36,6 +36,12 @@ import { GlavnaComponent } from './glavna/glavna.component';
 @NgModule({
   declarations: [
     AppComponent,
+    jqxGridComponent,
+    jqxButtonComponent,
+    jqxCheckBoxComponent,
+    jqxWindowComponent,
+    // jqxDateTimeInputComponent,
+    jqxListBoxComponent,
     SiteLayoutComponent,
     SiteHeaderComponent,
     SiteFooterComponent,

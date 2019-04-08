@@ -51,7 +51,18 @@ import { GlavnaComponent } from './glavna/glavna.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    NgxDatatableModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MyDatePickerModule,
+    MatCardModule,
+    StorageServiceModule,
+    FileUploadModule,
+    ScrollingModule,
+    Ng2OrderModule,
+    NgxPaginationModule,
+    Ng2SearchPipeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

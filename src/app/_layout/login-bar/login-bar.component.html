@@ -1,3 +1,270 @@
-<p>
-  login-bar works!
-</p>
+<script src="login-bar.component.ts"></script>
+<div class="tbar">
+  <!--login-bar works!-->
+
+  <!--[hidden]="thidden"-->
+
+  <div id="dvLogovanje" [hidden]="tLogovanjeHdn">
+        <span id="spnLogin" (click)="Login_click()" class="logitem">
+           Login
+        </span> /
+    <!-- <span id="spnLogin" (click)="onClickQ()" class="logitem">
+        Login
+     </span> / -->
+    <span id="spnSignin" (click)="Signin_click()" class="logitem">
+           Sign in
+        </span>
+  </div>
+
+  <div  id="dvLogged" [hidden]="tLoggedHdn" style="float:right">
+        <span id="Span1" style="float:left">
+           Logged:
+             &nbsp;
+        </span>
+    <span id="spnLogged" ng-bind="spnLogged" style="float:left; color:green; " >
+           {{tmember}}
+        </span>
+    <span id="Span2" style="float:left">
+            &nbsp; /  &nbsp;
+        </span>
+    <span id="spnLogout" (click)="spnLogout_click()" class="logitem">
+           Logout
+        </span>
+  </div>
+
+
+</div>
+
+
+<jqxWindow [theme]="'material'" #loginWindow (jqx-on-closed)="CloseLogin($event)"
+           [width]="360"
+           [height]="300"
+           [cancelButton]="'.cancelButton'"
+           [resizable]="false"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'fade'"
+           [title]= "'Login / Sign in'"
+           style="position: fixed; left: 50%; top: 50%;">
+
+  <!--[position]="{ x: 90, y: 140 }"-->
+  <!--fade, slide, combined-->
+  <div class="headerStyles">
+    Find
+  </div>
+  <div style="overflow: hidden;" >
+
+    <div class="tcontent" id="customWindowContent1" style="overflow: hidden;" [hidden]="tLogTipHdn1">
+
+      <div id="dvJedan">
+        <div class="dvnatpis">
+          <span class="spnatpis">User name:</span>
+        </div>
+
+        <div style="float: left;" >
+          <input #lgn2 type="text" class="form-control" [(ngModel)]="login_name2" (keypress)="keypressed(lgn2.value)">
+        </div>
+
+      </div>
+
+      <div style="clear: both;"></div>
+
+      <div id="dvDva">
+        <div class="dvnatpis">
+          <span class="spnatpis">Password:</span>
+        </div>
+
+        <div style="float: left;" >
+          <input #pswdd type="password" class="form-control" [(ngModel)]="pswd">
+        </div>
+
+      </div>
+
+      <div style="clear: both;"></div>
+
+
+      <div class="dugmaddv">
+        <div style="width: 100%">
+          <div  style="width: 50%; float: left; text-align:center;">
+            <button class="btn btn-primary tbtn" type="submit" (click)="closeLogin()" >Cancel</button>
+          </div>
+          <div  style="width: 50%; float: left; text-align:center;">
+            <button class="btn btn-primary tbtn" type="submit" (click)="LogIn()">OK</button>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="clear: both;"></div>
+
+      <div id="dvTri">
+        <div class="dvnatpis">
+          <span class="linkl logitem" (click)="spnSignIn_click()">Sign in</span>
+        </div>
+
+        <jqxCheckBox (onChange)="checkBox11OnChange($event)"
+                     style='margin-right: 10px; float: right;  margin-top: 13px;'
+                     [width]='25' [height]='25' [checked]='false'
+                     #CheckBox1>
+        </jqxCheckBox>
+        <div class="spnDemo"  style="width: 8px"> </div>
+        <span class="spnDemo logitem" (click)="spnDemo_click()">DEMO mode</span>
+        <div style="clear: both;"></div>
+        <div class="dvnatpis">
+          <span class="linkl logitem" (click)="spnForgot_click()">Forgot your password</span>
+        </div>
+
+      </div>
+
+    </div>
+
+    <div  id="customWindowContent2" style="overflow: hidden;" [hidden]="tLogTipHdn2">
+      <div id="dv2Jedan">
+        <div class="dvnatpis">
+          <span class="spnatpis">User name:</span>
+        </div>
+
+        <div style="float: left;" >
+          <!--<input type="text" id="login_name1" #login_name1 class="form-control" [(ngModel)]="login_name1" name="login" id="inpLogin">-->
+          <input  #lgn1 type="text" class="form-control" [(ngModel)]="login_name1" (keypress)="keypressed(lgn1.value)">
+        </div>
+
+      </div>
+
+      <!--<div >-->
+      <!--&lt;!&ndash;<input #name>&ndash;&gt;-->
+      <!--<input #name2>-->
+      <!--<button  (click)="editName()">Edit</button>-->
+      <!--</div>-->
+
+      <div id="dv2Dva">
+        <div class="dvnatpis">
+          <span class="spnatpis">E-mail:</span>
+        </div>
+
+        <div style="float: left;" >
+          <input #eml type="text" class="form-control" [(ngModel)]="emll" (keypress)="keypressed(eml.value)">
+        </div>
+
+      </div>
+
+      <div style="clear: both;"></div>
+
+      <div class="dugmaddv">
+        <div style="width: 100%">
+          <div  style="width: 50%; float: left; text-align:center;">
+            <button class="btn btn-primary tbtn" (click)="closeLogin()" type="submit">Cancel</button>
+          </div>
+          <div  style="width: 50%; float: left; text-align:center;">
+            <button class="btn btn-primary tbtn" (click)="SignIn()" type="submit">Sign in</button>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="clear: both;"></div>
+
+      <div id="dv2Tri">
+        <div class="dvnatpis">
+          <span class="linkl logitem" (click)="spnLogIn_click()">Log in</span>
+        </div>
+
+      </div>
+    </div>
+
+
+    <div  id="customWindowContent3" style="overflow: hidden;" [hidden]="tLogTipHdn3">
+      <div id="d32Jedan">
+        <div class="dvnatpis">
+          <span class="spnatpis">User name:</span>
+        </div>
+
+
+        <div style="float: left;" >
+          <input #lgn3 type="text" class="form-control" [(ngModel)]="login_name3" (keypress)="keypressed(lgn3.value)">
+        </div>
+
+      </div>
+
+
+      <div id="dv3Dva">
+        <div class="dvnatpis">
+          <span class="spnatpis">E-mail:</span>
+        </div>
+
+        <div style="float: left;" >
+          <input #eml2 type="text" class="form-control" [(ngModel)]="emll2">
+        </div>
+
+      </div>
+
+      <div style="clear: both;"></div>
+
+      <div class="dugmaddv">
+        <div style="width: 100%">
+          <div  style="width: 50%; float: left; text-align:center;">
+            &nbsp;
+            <!--<button class="btn btn-primary tbtn" type="submit">Cancel</button>-->
+          </div>
+          <div  style="width: 50%; float: left; text-align:center;">
+            <button class="btn btn-primary tbtn" (click)="Ask()" type="submit">Ask</button>
+          </div>
+
+        </div>
+      </div>
+
+      <div style="clear: both;"></div>
+
+      <div id="dv3Tri">
+        <div class="dvnatpis">
+          <span class="linkl logitem" (click)="spnLogIn_click()">Log in</span>
+        </div>
+
+      </div>
+    </div>
+
+    <div  id="customWindowContent4" style="overflow: hidden;" [hidden]="tLogTipHdn4">
+      <p style="width:100%; font-family:Arial; font-size:medium;">In the working version the program would now send a password to your email address.
+      </p>
+
+      <p style="width:100%; font-family:Arial; font-size:medium;">With your login name and the password you've received you could login to the site.
+      </p>
+
+      <p style="width:100%; font-family:Arial; font-size:medium;">If you want to test the site with your data, send the request to my e-mail siteknower@siteknower.com and I will add a new database on our server and send you your username and password.
+      </p>
+    </div>
+
+  </div>
+
+
+</jqxWindow>
+
+<jqxWindow #messageWindow
+           [theme]="'material'"
+           [width]="260"
+           [height]="170"
+           [resizable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    <!--Dobar dan-->
+    <!--<label [(ngModel)]="tmessage">-->
+    {{ tmessage }}
+    <div class="messageFooterStyles">
+      <button class="btn btn-primary tbtnm" (click)="closeMessage()" type="submit">OK</button>
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>
+

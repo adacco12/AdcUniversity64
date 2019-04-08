@@ -1,0 +1,101 @@
+.tbar {
+  margin-top: -6px;
+  height:29px;
+  background-color: Menu;
+  padding:3px 15px 3px;
+  text-align: right;
+  font-size: 17px;
+  border-bottom: solid;
+  border-bottom-width: thin;
+  border-bottom-color: gainsboro;
+}
+
+.logitem:hover {
+  cursor:pointer;
+  color:blue;
+  text-Decoration:underline;
+}
+
+input{
+  /*background-color: #4CAF50;*/
+  /*color: white;*/
+  /*padding: 12px 20px;*/
+  /*border: solid;*/
+  /*border-width: thin;*/
+  /*border-radius: 4px;*/
+  /*cursor: pointer;*/
+  /*float: right;*/
+  width: 220px;
+  height: 30px;
+  margin-top: 10px;
+}
+
+.dvnatpis {
+  float: left;
+  width:1px;
+  margin-left: 5px;
+  margin-top: 15px;
+  /*background-color: yellow;*/
+  width: 110px;
+}
+
+.spnatpis {
+  font-size: medium;
+}
+
+.dugmaddv{
+  margin-top: 20px;
+}
+
+.tbtn{
+  width: 130px;
+}
+.tbtnm{
+  width: 100px;
+}
+
+.linkl{
+  font-size: medium;
+  float: left;
+  width:300px;
+}
+
+.headerStyles{
+  height:40px;
+  font-size: medium;
+  /*background-color:orange;*/
+  font-weight:bold;
+  padding-top: 20px;
+}
+
+.messageHeaderStyles {
+  height:20px;
+  font-size: medium;
+  font-weight:bold;
+  padding-top: 10px;
+}
+
+.messageContentStyles{
+  padding-top: 10px;
+  font-size: medium;
+  height:50px;
+  /*background-color:orange;*/
+}
+
+.messageFooterStyles{
+  margin-top: 30px;
+  /*background-color:orange;*/
+  text-align:center;
+}
+
+.spnDemo {
+  font-size: medium;
+  margin-top: 15px;
+  float: right;
+}
+
+@media screen and (max-width: 767px) {
+  .row.content {height: auto;}
+  .tcontent {width: auto;}
+
+}

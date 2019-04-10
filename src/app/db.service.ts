@@ -334,7 +334,6 @@ export class DbService {
     if ( vrativalue !== '0') { return vrativalue; }
   }
 
-
   uzmiStudenta(id: number, tdatabase: string): Observable<Student[]> {
     let turl = `${this.customersGetStudent}${id}`;
     turl = turl + '/' + tdatabase;

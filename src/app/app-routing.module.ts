@@ -7,6 +7,11 @@ import { SiteFooterComponent } from './_layout/site-footer/site-footer.component
 import { LoginBarComponent } from './_layout/login-bar/login-bar.component';
 import { HomeComponent } from './home/home.component';
 import { GlavnaComponent } from './glavna/glavna.component';
+import { Liststudents2Component } from './liststudents2/liststudents2.component';
+import { TstudentComponent } from './tstudent/tstudent.component';
+import { NgforComponent } from './ngfor/ngfor.component';
+import { GstGetComponent } from './gst-get/gst-get.component';
+
 
 const routes: Routes = [
 
@@ -18,8 +23,11 @@ const routes: Routes = [
     children: [
       { path: '', component: GlavnaComponent, pathMatch: 'full'},
       { path: 'glavna', component: GlavnaComponent },
-      { path: 'home', component: HomeComponent }
-
+      { path: 'home', component: HomeComponent },
+      { path: 'liststudents2', component: Liststudents2Component },
+      { path: 'tstudent', component: TstudentComponent },
+      { path: 'ngfor', component: NgforComponent },
+      { path: 'gst-get', component: GstGetComponent }
 
     ]
   }

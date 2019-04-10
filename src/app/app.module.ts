@@ -32,6 +32,11 @@ import { SiteFooterComponent } from './_layout/site-footer/site-footer.component
 import { LoginBarComponent } from './_layout/login-bar/login-bar.component';
 import { HomeComponent } from './home/home.component';
 import { GlavnaComponent } from './glavna/glavna.component';
+import { Liststudents2Component } from './liststudents2/liststudents2.component';
+import { TstudentComponent } from './tstudent/tstudent.component';
+import { UploadComponent } from './upload/upload.component';
+import { NgforComponent } from './ngfor/ngfor.component';
+import { GstGetComponent } from './gst-get/gst-get.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +52,12 @@ import { GlavnaComponent } from './glavna/glavna.component';
     SiteFooterComponent,
     LoginBarComponent,
     HomeComponent,
-    GlavnaComponent
+    GlavnaComponent,
+    Liststudents2Component,
+    TstudentComponent,
+    UploadComponent,
+    NgforComponent,
+    GstGetComponent
   ],
   imports: [
     BrowserModule,

@@ -10,13 +10,13 @@ const express = require('express'),
 const studentRoute = require('./routes/students.route');
 mongoose.Promise = global.Promise;
 
-const mngDB = 'mongodb://localhost:27017/university01';
+//const mngDB = 'mongodb://localhost:27017/university01';
 
-mongoose.connect(mngDB, { useNewUrlParser: true }).then(
-//mongoose.connect('mongodb://localhost:27017/ng7crud', { useNewUrlParser: true }).then(
-  () => {console.log('Database is connected') },
-  err => { console.log('Can not connect to the database'+ err)}
-);
+//mongoose.connect(mngDB, { useNewUrlParser: true }).then(
+////mongoose.connect('mongodb://localhost:27017/ng7crud', { useNewUrlParser: true }).then(
+//  () => {console.log('Database is connected') },
+//  err => { console.log('Can not connect to the database'+ err)}
+//);
 
 const app = express();
 app.use(bodyParser.json());

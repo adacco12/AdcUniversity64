@@ -11,6 +11,7 @@ import { Liststudents2Component } from './liststudents2/liststudents2.component'
 import { TstudentComponent } from './tstudent/tstudent.component';
 import { NgforComponent } from './ngfor/ngfor.component';
 import { GstGetComponent } from './gst-get/gst-get.component';
+import { NotloggedComponent } from './notlogged/notlogged.component';
 
 
 const routes: Routes = [
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: '', component: GlavnaComponent, pathMatch: 'full'},
       { path: 'glavna', component: GlavnaComponent },
       { path: 'home', component: HomeComponent },
+      { path: 'notlogged', component: NotloggedComponent },
       { path: 'liststudents2', component: Liststudents2Component },
       { path: 'tstudent', component: TstudentComponent },
       { path: 'ngfor', component: NgforComponent },

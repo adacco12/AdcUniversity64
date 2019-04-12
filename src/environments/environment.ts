@@ -32,8 +32,8 @@ export const environment = {
   gtendind: '16',
   toffset: 0,
   tsearchstring: '',
-  //THOST: 'localhost',
-  THOST: 'www.adacco.com'
+  THOST: 'localhost',
+  //THOST: 'www.adacco.com'
 };
 
 /*

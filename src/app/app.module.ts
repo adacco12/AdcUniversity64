@@ -37,6 +37,7 @@ import { TstudentComponent } from './tstudent/tstudent.component';
 import { UploadComponent } from './upload/upload.component';
 import { NgforComponent } from './ngfor/ngfor.component';
 import { GstGetComponent } from './gst-get/gst-get.component';
+import { NotloggedComponent } from './notlogged/notlogged.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +58,8 @@ import { GstGetComponent } from './gst-get/gst-get.component';
     TstudentComponent,
     UploadComponent,
     NgforComponent,
-    GstGetComponent
+    GstGetComponent,
+    NotloggedComponent
   ],
   imports: [
     BrowserModule,

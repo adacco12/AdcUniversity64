@@ -1,0 +1,228 @@
+<div class="profile-home">
+
+  <div class="container">
+    <div class="row trow">
+      <div class="col-sm-12 tcol" *ngIf="edited">
+
+        <div class="container">
+          <div class="row trow2">
+            <div class="col-sm-6 tcol2 mt-2" *ngIf="edited" >
+              <div class="form-group glabelgroup">
+                <label [hidden]="!edited" class="oplabel">ID number: </label>
+                <span class="glabel">{{sstudent_id}}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="codeeInput">Code</label>
+                <input #scode type="text" [(ngModel)]="sstudent_code" class="form-control" id="codeeInput" aria-describedby="codeHelp" maxlength="20">
+              </div>
+
+              <div class="form-group">
+                <!--<label for="codeeInput">Enrollment date</label>-->
+                <div style="float: left; width: 120px;">
+                  <label [hidden]="!edited" class="oplabel" style="margin-top: 5px">Enrollment date </label>
+                </div>
+                <div style="float: right; width: calc(100% - 200px);">
+                  <my-date-picker class="dateinput" name="mydate" [options]="myDatePickerOptions"
+                                  [(ngModel)]="ssdatum" required ></my-date-picker>
+                </div>
+              </div>
+
+              <div style="clear: both;"></div>
+
+              <div class="form-group">
+                <label for="firstnameInput">First name</label>
+                <input #fname type="text" [(ngModel)]="sstudent_firstname" class="form-control" id="firstnameInput" placeholder="FirstName" maxlength="30">
+              </div>
+
+              <div class="form-group">
+                <label for="lastnameInput">Last name</label>
+                <input #lname type="text" [(ngModel)]="sstudent_lastname" class="form-control" id="lastnameInput" placeholder="LastName" maxlength="40">
+              </div>
+
+              <div class="form-group">
+                <label for="addressInput">Address</label>
+                <input type="text"  [(ngModel)]="sstudent_address" [(ngModel)]="sstudent_address" class="form-control" id="addressInput" placeholder="Address" maxlength="50">
+              </div>
+
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <!--<input type="email" [(ngModel)]="sstudent_email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">-->
+                <input  #eml type="text" [(ngModel)]="emll" class="form-control" id="email" name="email" placeholder="Email" maxlength="80">
+                <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+
+              </div>
+
+              <div class="form-group">
+                <!--<label for="codeeInput">Enrollment date</label>-->
+                <div style="float: left; width: 120px;">
+                  <label [hidden]="!edited" class="oplabel" style="margin-top: 5px">Age </label>
+                </div>
+                <div style="float: right; width: calc(100% - 200px);">
+                  <input type="text" [(ngModel)]="sstudent_age" class="form-control" id="ageInput" placeholder="Age" (keypress)="numberOnly($event)" maxlength="3">
+                </div>
+              </div>
+
+              <!--<p>-->
+              <!--<label [hidden]="!edited"class="oplabel" >First name:-->
+              <!--<input [(ngModel)]="sstudent_firstname" placeholder="FirstName"/>-->
+
+              <!--</label>-->
+              <!--</p>-->
+              <!--<p>-->
+              <!--<label [hidden]="!edited">Last name:-->
+              <!--<input [(ngModel)]="sstudent_lastname" placeholder="LastName"/>-->
+              <!--</label>-->
+              <!--</p>-->
+              <div class="container">
+              </div>
+            </div>
+
+            <div class="col-sm-6 tcol2 mt-2" *ngIf="edited" style="">
+              <!---->
+              <!--<div class="input-group mb-3">-->
+              <!--<div class="input-group-prepend">-->
+              <!--<span class="input-group-text" id="inputGroup-sizing-default">First Name</span>-->
+              <!--</div>-->
+              <!--<input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">-->
+              <!--</div>-->
+
+              <!--<div class="input-group mb-3">-->
+              <!--<div class="input-group-prepend">-->
+              <!--<span class="input-group-text" id="inputGroup-sizing-default2">Last Names 123</span>-->
+              <!--</div>-->
+              <!--<input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">-->
+              <!--</div>-->
+
+              <!--&lt;!&ndash;<img id="Img1" ng-src={{imgSrc}} alt="No picture">&ndash;&gt;-->
+              <!--<img [src]="imgSrc">-->
+              <!--&lt;!&ndash;<img class="logo" src="http://www.siteknower.com/UploadedImages/Photo007.jpg">&ndash;&gt;-->
+              <!--<p>-->
+              <!--<button (click)="upload()">Upload</button>-->
+              <!--</p>-->
+
+              <div id="imgDiv" class="tImage" >
+                <!--           <img id="Img1" ng-src={{imgSrc}} height="{{imgSrc.height}}" width="{{imgSrc.width}}"  alt="No picture"">-->
+                <!--<img id="Img1" [src]="imgSrc" alt="No picture"">-->
+                <img [src]="imgSrc" class="tPic" (error)="onErrorLoadPic()">
+              </div>
+
+              <div class="dvUpload" *ngIf="upl_vis">
+                <span class="spnatpis logitem" (click)="upload()" >Upload</span>
+              </div>
+
+              <div class="dvUpload" *ngIf="chng_vis">
+                <span class="spnatpis logitem" (click)="upload()" >Change image</span>
+              </div>
+
+
+              <div id="imgPrintDiv" class="tPrintDiv" >
+                <div id="printtekst">
+                  Print
+                </div>
+
+                <div class="tListDiv" >
+                  <jqxListBox #listBoxReference class="listboks" style="font-size: 16px; font-family:Arial;"
+                              [(ngModel)]="selectedValue"
+                              [selectedIndex]="0"
+                              [source]="source"
+                              [width]="100"
+                              [itemHeight]="29"
+                              [height]="90">
+                  </jqxListBox>
+                </div>
+                <div id="ButDiv" class="tButDiv" >
+                  <button class="btn btn-primary tbtn" type="submit" (click)="stampaj('0')" >On screen</button>
+                  <div style="height:15px"></div>
+                  <button class="btn btn-primary tbtn" type="submit" (click)="stampaj('1')" >On paper</button>
+
+                </div>
+              </div>
+
+              <div class="container">
+                <div class="row trow3">
+                  <div class="col-sm-6 tcol3 mt-2" style="">
+                    <button type="button" type="submit" (click)="potvrdi()" class="btn btn-success btn3">OK</button>
+                  </div>
+                  <div class="col-sm-6 tcol3 mt-2" style="">
+                    <button type="button" type="submit" (click)="cancel()" class="btn btn3">Cancel</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+</div>
+
+<jqxWindow #messageWindow
+           [theme]="'material'"
+           [width]="260"
+           [height]="170"
+           [resizable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    <!--Dobar dan-->
+    <!--<label [(ngModel)]="tmessage">-->
+    {{ tmessage }}
+    <div class="messageFooterStyles">
+      <button class="btn btn-primary tbtnm" (click)="closeMessage()" type="submit">OK</button>
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>
+
+
+
+<jqxWindow  #uploadWindow
+            [theme]="'material'"
+            [width]="460"
+            [height]="270"
+            [resizable]="false"
+            [cancelButton]="'.cancelButton'"
+            [isModal]="true"
+            [autoOpen]="false"
+            [modalOpacity]="0.3"
+            [animationType]="'slide'"
+            [title]= "'Upload'"
+            style="position: fixed; left: 50%; top: 50%;">
+  <div class="uploadHeaderStyles">
+    Message
+  </div>
+  <div class="uploadContentStyles">
+
+    <app-upload></app-upload>
+
+    <div class="uploadFooterStyles">
+      <button class="btn btn-primary tbtnm" (click)="closeUpload()" type="submit">OK</button>
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>
+
+
+
+
+

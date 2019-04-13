@@ -1,0 +1,141 @@
+<div class="profile-home">
+
+  <div class="container">
+
+    <!-- Example row of columns -->
+    <div class="row trow">
+
+      <div class="col-sm-12 pr-sm-1 pl-sm-0 mt-2">
+
+        <div class="tdiv tgdiv" >
+
+          <div class="dugmaddv">
+            <div style="width: 100%">
+              <div  style="float: left; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="otvori()" >Open</button>
+              </div>
+              <div  style="float: left; margin-left:20px; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="novi()">New</button>
+              </div>
+              <div  style="float: left; margin-left:20px; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="brisiRed()">Delete</button>
+              </div>
+
+              <div  style="float: right; text-align:right; margin-right: 15px;">
+                <label>
+                  <span class="checkboxtext">
+                       Filter  &nbsp; &nbsp;
+                   </span>
+                  <input type="checkbox" [(ngModel)]="checkStatus" (click)="doIfChecked()" value="" style ="font-size: large" >
+                </label>
+              </div>
+              <!--<div  style="float: left; margin-left:20px; text-align:left;">-->
+              <!--<button class="btn btn-primary tbtn" type="submit" (click)="brisisliku()">Delete pic</button>-->
+              <!--</div>-->
+            </div>
+          </div>
+
+          <jqxGrid #myGrid
+                   [auto-create]='false'
+                   (onRowselect)="Rowselect($event)"
+                   (onBindingcomplete)="Bindingcomplete($event)"
+          >
+          </jqxGrid>
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <!--/////////-->
+    <div class="row trow2">
+
+      <div class="col-sm-12 pr-sm-1 pl-sm-0 mt-2">
+
+        <div class="tdiv" >
+
+          <p>
+            This is a simple scrollable grid made with jqwidgets tool.
+            <br />
+
+            It can be used for small size databases.
+            <br />
+
+            Unlike examples with paging and virtual-scroling, there is no server-side pagination.
+        </div>
+      </div>
+
+    </div>
+
+    <!--//////////-->
+
+  </div>
+
+</div>
+
+
+<jqxWindow [theme]="'material'" #areyousureWindow
+           [width]="320"
+           [height]="170"
+           [resizable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    <!--Dobar dan-->
+    <!--<label [(ngModel)]="tmessage">-->
+    {{ tmessage }}
+    <div class="messageFooterStyles">
+      <div style="float:left; width: 50%; text-align: center">
+        <button class="btn btn-primary tbtnm" (click)="closeYes()" type="submit">Yes</button>
+      </div>
+      <div style="float:left; width: 50%; text-align: center">
+        <button class="btn btn-primary tbtnm" (click)="closeNo()" type="submit">No</button>
+      </div>
+
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>
+
+<!--<div class="twaitdiv" [hidden]="tWaitHdn">-->
+<!--<img class="tslika" src="assets/images/wait.gif"  alt="Logo">-->
+<!--</div>-->
+
+
+<jqxWindow [theme]="'material'" #messageWindow
+           [width]="260"
+           [height]="170"
+           [resizable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    <!--Dobar dan-->
+    <!--<label [(ngModel)]="tmessage">-->
+    {{ tmessage }}
+    <div class="messageFooterStyles">
+      <button class="btn btn-primary tbtnm" (click)="closeMessage()" type="submit">OK</button>
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>

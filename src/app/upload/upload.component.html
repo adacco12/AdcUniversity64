@@ -1,0 +1,19 @@
+<div class="tdvmain">
+
+  <input type="file" name="photo"
+         ng2FileSelect
+         [uploader]="uploader"/>
+
+  <p class="tporuka">
+    {{ tmessage }}
+  </p>
+
+
+  <button type="button" class="btn btn-success btn-s"
+          (click)="uploader.uploadAll()"
+          [disabled]="!uploader.getNotUploadedItems().length" >
+    Upload an Image
+  </button>
+
+
+</div>

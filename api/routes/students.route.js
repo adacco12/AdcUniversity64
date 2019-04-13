@@ -237,25 +237,39 @@ studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:ag
       return next(new Error('Could not load Document'));
     else {
       //fndstudent.IdStud = req.body.IdStud;
-      fndstudent.Code = tcode;
+      fndstudent[0].Code = tcode;
       //fndstudent.FirstName = time;
 
-      fndstudent.save()
+      fndstudent[0].save()
         .then(fndstudent => {
-          res.json('Update complete');
+          //res.json('Update complete58');
+              Odgovor = 'ok';
+
+              dummymyObj = new Object();
+              dummymyObj.tekst1 = Odgovor;
+              var rows2 = new Array();
+
+              rows2[0] = dummymyObj;
+              //res.setHeader('Access-Control-Allow-Origin', '*');
+              //resolve(res.status(200).json(rows));
+              res.json(rows2);
         })
         .catch(err => {
-          res.status(400).send("unable to update the database");
+          //res.status(400).send("unable to update the database");
+              Odgovor = 'greska';
+
+              dummymyObj = new Object();
+              dummymyObj.tekst1 = Odgovor;
+              dummymyObj.tekst2 = err.toString();
+              var rows2 = new Array();
+
+              rows2[0] = dummymyObj;
+              //res.setHeader('Access-Control-Allow-Origin', '*');
+              //reject(res.status(200).json(rows));
+              res2.json(rows2);
         });
 
-      //fndstudent.save(function (err) {
-      //  if (err) {
-      //    res.status(400).send("unable to update the database");
-      //  }
-      //  else {
-      //    res.json('Update complete');
-      //  }
-      //});
+    
 
     }
   });

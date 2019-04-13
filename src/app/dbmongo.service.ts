@@ -88,7 +88,7 @@ export class DbmongoService {
     return this.http.get<Student[]>(turl);
   }
 
-  updejtajStudenta(id: number, code: string, prezime: string, ime: string, address: string, email: string, age: number, vreme: string ): Observable<Dekl[]> {
+  updejtajStudenta(id: number, code: string, prezime: string, ime: string, address: string, email: string, age: number, vreme: string ): Observable<Dummy[]> {
 
     // alert('updejtajStudenta n');
     if (address === '') { address = ' '; }
@@ -101,8 +101,8 @@ export class DbmongoService {
     turl = turl + '/' + email;
     turl = turl + '/' + age;
     turl = turl + '/' + vreme;
-    const a = this.http.get<Dekl[]>(turl);
-    return this.http.get<Dekl[]>(turl);
+    const a = this.http.get<Dummy[]>(turl);
+    return this.http.get<Dummy[]>(turl);
 
   }
 

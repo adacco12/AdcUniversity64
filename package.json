@@ -37,6 +37,8 @@
     "ng2-order-pipe": "^0.1.5",
     "ng2-search-filter": "^0.4.7",
     "ngx-pagination": "^3.2.1",
+    "ngx-print": "^1.1.4",
+    "ngx-xml2json": "^1.0.2",
     "rxjs": "~6.3.3",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

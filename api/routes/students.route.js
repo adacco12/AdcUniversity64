@@ -22,6 +22,7 @@ let StntModel = require('../models/Students_mdl');
 // dodata nova collection blog
 ////////////////
 
+
 // Defined store route
 studentsRoutes.route('/add').post(function (req, res) {
   let tstudent = new StntModel(req.body);
@@ -238,7 +239,13 @@ studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:ag
     else {
       //fndstudent.IdStud = req.body.IdStud;
       fndstudent[0].Code = tcode;
-      //fndstudent.FirstName = time;
+      fndstudent[0].FirstName = time;
+      fndstudent[0].LastName = tprezime;
+      fndstudent[0].Email = temail;
+      fndstudent[0].EnrDate = tvreme;
+      fndstudent[0].Address = taddress;
+      fndstudent[0].Age = tage;
+      
 
       fndstudent[0].save()
         .then(fndstudent => {
@@ -402,6 +409,54 @@ studentsRoutes.route('/delete/:tdatabase/:id').get(function (req, res) {
     else res.json('Successfully removed');
   });
 });
+
+studentsRoutes.route('/upload/:ttekst').get(function (req, res) {
+  const ttekst = req.params.ttekst;
+
+  //let sampleFile0 = "C:/Privr/Privr1/file0.txt";
+  let fl2 = "C:/Privr/Privr1/uploadsx/fajl4.txt";
+  const fs = require('fs');
+
+  var xml2js = require('xml2js');
+
+  var obj = { name: "Super", Surname: "Man", age: 23 };
+  obj = ttekst;
+
+  var builder = new xml2js.Builder();
+  var txml = builder.buildObject(obj);
+  console.dir(txml);
+
+  fs.writeFile(fl2, txml, function (err) {
+    if (err) {
+      Odgovor = 'Error';
+
+      dummymyObj = new Object();
+      dummymyObj.tekst1 = Odgovor;
+      dummymyObj.tekst2 = err.toString();
+      var rows = new Array();
+
+      rows[0] = dummymyObj;
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      reject(res.status(200).json(rows));
+    } else {
+      Odgovor = 'ok dodato';
+
+      dummymyObj = new Object();
+      dummymyObj.tekst1 = Odgovor;
+      dummymyObj.tekst2 = "";
+      var rows = new Array();
+
+      rows[0] = dummymyObj;
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      resolve(res.status(200).json(rows));
+    }
+
+    //console.log("The file was saved!!");
+    //res.send('saved2');
+  });
+
+});
+
 
 
 studentsRoutes.route('/check').get(function (req, res) {

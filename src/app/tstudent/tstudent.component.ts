@@ -13,6 +13,8 @@ import {IMyDpOptions} from 'mydatepicker';
 import {jqxWindowComponent} from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxwindow';
 import {jqxListBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxlistbox';
 
+import { NgxXml2jsonService } from 'ngx-xml2json';
+
 import {HttpClient} from '@angular/common/http';
 import * as $ from 'jquery';
 
@@ -20,9 +22,12 @@ import { MainService, ResultData } from '../main.service';
 import { SubscriptionLike as ISubscription } from 'rxjs';
 
 import { ImagecontrolService } from '../imagecontrol.service';
+// import {NgxPrintModule} from 'ngx-print';
+
 import {DbService} from '../db.service';
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
-
+import { DbmongoService } from '../dbmongo.service';
+import {Dummy} from '../dummy.service';
 
 @Component({
   selector: 'app-tstudent',
@@ -66,7 +71,6 @@ export class TstudentComponent implements OnInit {
   public lname = '';
   tfokusiraj = '';
 
-
   sub: ISubscription;
 
   @ViewChild('uploadWindow') uploadWindow: jqxWindowComponent;
@@ -105,7 +109,10 @@ export class TstudentComponent implements OnInit {
     private http: HttpClient,
     private ts: MainService,
     public dekl: Dekl,
+    private dbmongoService: DbmongoService,
+    public tdummy: Dummy,
     private imagecontrolService: ImagecontrolService,
+    private ngxXml2jsonService: NgxXml2jsonService
   ) {
     this.sstudent_firstname = selectedStudent.FirstName;
     this.sstudent_lastname = selectedStudent.LastName;
@@ -345,7 +352,7 @@ export class TstudentComponent implements OnInit {
     }
 
     let q = 0;
-    const tnapapir = '0';
+    let tnapapir = '0';
 
     let timereporta = 'Student' + tbrj.toString() + '.rpt';
     let url = 'http://www.test.siteknower.com/ReportCrystal.aspx?query1=' + tqr + '&imebaze=' + timebaze + '&imetablice=' + 'Students' + '&imereporta=' + timereporta + '&napapir=' + tnapapir;
@@ -385,7 +392,7 @@ export class TstudentComponent implements OnInit {
 
   }
 
-  stampaj(tnapapir): void {
+  stampajs(tnapapir): void {
     // alert('stampaj');
     // this.myListBox.selectIndex(2);
     // let a = this.myListBox.getSelectedIndex()
@@ -414,5 +421,135 @@ export class TstudentComponent implements OnInit {
     win.focus();
 
   }
+
+  stampaj(tnapapir): void {
+    // alert('stampaj');
+
+    let tbrj = 1;
+    tbrj = this.myListBox.getSelectedIndex() + 1;
+
+    // let datarows = [];
+    // let row = {};
+    // row["CustomerId"] = 'ALFK';
+    // row["ContactName"] = 'Marija';
+    // row["City"] = 'Zagreb';
+    // row["Country"] ='Germany';
+    // datarows[0] = row;
+    //
+    // let row2 = {};
+    // row2["CustomerId"] = 'ANATR';
+    // row2["ContactName"] = 'Krešo';
+    // row2["City"] = 'Beograd';
+    // row2["Country"] ='New Zealand';
+    // datarows[1] = row2;
+    //
+    // let gdatarows = [];
+    // let grow = {};
+    // grow["DataTable1"] = datarows;
+    // gdatarows[0] = grow;
+    //
+    // let string3 = JSON.stringify(gdatarows[0]);
+
+    //////////////////////////////////////////////////
+    let stdntdatarows = [];
+    let stdntobj = {};
+    stdntobj['Counter'] = '747';
+    stdntobj['IdStud'] = '5';
+    stdntobj['Red_br'] = '2';
+    stdntobj['Code'] = '02';
+    stdntobj['Venice'] = 'Marija';
+    stdntobj['LastName'] = 'Zigfrid';
+    stdntobj["Address"] ='Germany';
+    stdntdatarows[0] = stdntobj;
+
+    let gdatarows = [];
+    let grow = {};
+    grow["Students"] = stdntdatarows;
+
+    let dumdatarows = [];
+    let dumobj = {};
+    dumobj['Counter'] = '1';
+    dumobj['Broj1'] = '0';
+    dumdatarows[0] = dumobj;
+    grow["Dummy"] = dumdatarows;
+
+    gdatarows[0] = grow;
+    //
+    let string3 = JSON.stringify(gdatarows[0]);
+    ////////////////////////////////////////////////////
+
+    // const tnapapir = '0';
+    // if ( this.uploadaj('') === 1) {
+    //   return;
+    // }
+
+
+    //let timereporta = 'Student' + tbrj.toString() + '.rpt';
+    //let url = 'http://www.test.siteknower.com/ReportCrystal.aspx?query1=' + tqr + '&imebaze=' + timebaze + '&imetablice=' + 'Students' + '&imereporta=' + timereporta + '&napapir=' + tnapapir;
+    // let url = 'http://www.test.siteknower.com/report31.aspx';
+
+    // let url = "http://www.test.siteknower.com/Report35.aspx?imereporta=CustomerReport.rpt&imejsona={'NewDataSet': {'DataTable1': [{'CustomerId': '2ALFKI','ContactName': 'MaryJAnnA','City': 'Boise','Country': 'Germany'},{'CustomerId': '3ANATR','ContactName': 'Ana Trujillo','City': 'México D.F.','Country': 'Mexico'},{'CustomerId': 'ANTON','ContactName': 'Antonio Moreno','City': 'Montréal','Country': 'Mexico'},{'CustomerId': 'AROUT','ContactName': 'Thomas Hardy','City': 'Mannheim','Country': 'Sweden'},{'CustomerId': '7BERGS','ContactName': 'Christina Berglund','City': 'Luleå','Country': 'Sweden'}]}}";
+
+    // let ttjsn ="{'NewDataSet': {'DataTable1': [{'CustomerId': '2ALFKI','ContactName': 'MaryJAnnA','City': 'Boise','Country': 'Germany'},{'CustomerId': '3ANATR','ContactName': 'Ana Trujillo','City': 'México D.F.','Country': 'Mexico'},{'CustomerId': 'ANTON','ContactName': 'Antonio Moreno','City': 'Montréal','Country': 'Mexico'},{'CustomerId': 'AROUT','ContactName': 'Thomas Hardy','City': 'Mannheim','Country': 'Sweden'},{'CustomerId': '7BERGS','ContactName': 'Christina Berglund','City': 'Luleå','Country': 'Sweden'}]}}";
+    // let url = "http://www.test.siteknower.com/Report35.aspx?imereporta=CustomerReport.rpt&imejsona=" + ttjsn;
+
+    ////let ttjsn ="{ 'dsStudents': { 'Students': [{ 'Counter': '747',  'IdStud': '5', 'Red_br': '2', 'Code': '02', 'FirstName': 'Venice',  'LastName': 'Winfrey', 'Email': 'qq@tz.ku', 'Address': 'aaaa1', 'EnrDate': '2017-08-12T00:00:00+02:00', 'Age': '25', 'Ozn': '0' }, { 'Counter': '1481', 'IdStud': '739', 'Red_br': '726', 'Code': '0726', 'FirstName': 'Joeann', 'LastName': 'Abramowitz', 'EnrDate': '2015-06-05T00:00:00+02:00'}], 'Dummy': { 'Counter': '1','Broj1': '0','Broj2': '0','Broj3': '0','Broj4': '0','Broj5': '0','Broj6': '0', 'Broj7': '0', 'Broj8': '0', 'Broj9': '0', 'Broj10': '0', 'Broj11': '0', 'Broj12': '0', 'Broj13': '0', 'Broj14': '0', 'Broj15': '0', 'Broj16': '0', 'Broj17': '0', 'Broj18': '0', 'Broj19': '0', 'Broj20': '0' }}}";
+
+    // let ttjsn ="{ 'dsStudents': { 'Students': [{ 'Counter': '747',  'IdStud': '5', 'Red_br': '2', 'Code': '02', 'FirstName': 'Venice',  'LastName': 'Winfrey', 'Email': 'qq@tz.ku', 'Address': 'aaaa1', 'EnrDate': '2017-08-12T00:00:00+02:00', 'Age': '25', 'Ozn': '0' }, { 'Counter': '1481', 'IdStud': '739', 'Red_br': '726', 'Code': '0726', 'FirstName': 'Joeann', 'LastName': 'Abramowitz', 'EnrDate': '2015-06-05T00:00:00+02:00'}], 'Dummy': { 'Counter': '1','Broj1': '0' }}}";
+    //let ttjsn ="{ 'dsStudents': { 'Students': [{ 'Counter': '747',  'IdStud': '5', 'Red_br': '2', 'Code': '02', 'FirstName': 'Venice',  'LastName': 'Winfrey', 'Email': 'qq@tz.ku', 'Address': 'aaaa1', 'EnrDate': '2017-08-12T00:00:00+02:00', 'Age': '25', 'Ozn': '0' }], 'Dummy': { 'Counter': '1','Broj1': '0' }}}";
+    // let ttjsn ="{ 'dsStudents': { 'Students': [{ 'Counter': '747',  'IdStud': '5', 'Red_br': '2', 'Code': '02', 'FirstName': 'Venice',  'LastName': 'Winfrey' }], 'Dummy': { 'Counter': '1','Broj1': '0' }}}";
+    // let ttjsn = string3;
+    // let url = "http://www.test.siteknower.com/Report35.aspx?imereporta=Student1.rpt&imejsona=" + ttjsn;
+
+
+    // let url = "http://www.test.siteknower.com/Report35.aspx?imereporta=CustomerReport.rpt&imejsona={'NewDataSet': "+string3+"}";
+    // let tImeJsona = 'NewDataSet: ' + string3;
+    let tImeJsona = 'dsStudents: ' + string3;
+
+    //let timereporta = 'CustomerReport.rpt';
+    // let timereporta = 'Student' + tbrj.toString() + '.rpt';
+    let timereporta = 'Student1.rpt';
+
+    let url = 'http://www.test.siteknower.com/Report35.aspx?imereporta=' + timereporta + '&imejsona={' + tImeJsona + '}';
+
+    let th = screen.height - 100;
+    let tw = 910;
+
+    const win = window.open(url, '_blank', 'toolbar=yes,scrollbars=yes,resizable=yes,top=20,left=20,width=' + tw + ',height=' + th);
+
+    win.focus();
+  }
+
+  uploadaj(ttekst): number {
+    // alert('stampaj');
+    let rslt = 0;
+    let obj = "{ name: 'Dubtavko', Surname: 'Babec', age: 23 }";
+
+    this.dbmongoService.uploadFile(obj)
+      .subscribe(data => {
+
+        this.tdata = data;
+        this.tdummy.tekst1 = this.tdata[0].tekst1;
+
+        const a = this.tdummy.tekst1;
+        // b = this.tdummy.tekst2;
+        if (a === 'Error') {
+          rslt = 1;
+          alert('error with upload');
+        }
+        if (a === 'ok') {
+          // alert('update ok');
+          rslt = 0;
+        }
+      });
+    return rslt;
+  }
+
+  stampajjson(): void {
+    alert('stampajjson');
+  }
 }
+
+
+
 

@@ -11,6 +11,7 @@ import { jqxCheckBoxComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqx
 import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
 
 import {DbService} from '../../db.service';
+import * as $ from 'jquery';
 
 
 @Component({
@@ -449,6 +450,8 @@ export class LoginBarComponent {
 
             this.closeLogin();
             this.dekl.ulogovan = true;
+
+            //localStorage.setItem('member_name', 'Grijak Yeljko');
 
             this.router.navigate(['home']);
 

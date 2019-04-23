@@ -28,6 +28,9 @@ export class DbmongoService {
   UrlGetStudent = 'http://' + this.globv.THOST + ':4001/studenti/GetStudent/';
   UrlUpdateStudent = 'http://' + this.globv.THOST + ':4001/studenti/updateStudent/';
 
+  UrlUpload = 'http://' + this.globv.THOST + ':4001/studenti/upload/';
+
+
   // private UrlGetStudent = 'http://' + this.globv.THOST + ':8089/api/GetStudent/';
 
   // private customersUrlgetStudents = 'http://' + this.globv.THOST + ':8089/api/getStudents/';
@@ -106,6 +109,12 @@ export class DbmongoService {
 
   }
 
+  uploadFile(ttekst: string): Observable<Dummy[]> {
+    let turl = `${this.UrlUpload}`;
+    turl = turl +  ttekst;
 
+    const a = this.http.get<Dummy[]>(turl);
+    return this.http.get<Dummy[]>(turl);
+  }
 
 }

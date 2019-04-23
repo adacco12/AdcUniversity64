@@ -223,3 +223,7 @@
   border: 1px solid transparent;
   border-color: #d8d8d8;
 }
+
+.tdiv {
+  display: none;
+}

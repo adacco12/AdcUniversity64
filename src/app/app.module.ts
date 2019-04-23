@@ -24,6 +24,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'; //importing the module
 import { Ng2OrderModule } from 'ng2-order-pipe'; //importing the module
 import {NgxPaginationModule} from 'ngx-pagination';
 
+import {NgxPrintModule} from 'ngx-print';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SiteLayoutComponent } from './_layout/site-layout/site-layout.component';
@@ -38,6 +40,7 @@ import { UploadComponent } from './upload/upload.component';
 import { NgforComponent } from './ngfor/ngfor.component';
 import { GstGetComponent } from './gst-get/gst-get.component';
 import { NotloggedComponent } from './notlogged/notlogged.component';
+
 
 @NgModule({
   declarations: [
@@ -74,7 +77,8 @@ import { NotloggedComponent } from './notlogged/notlogged.component';
     ScrollingModule,
     Ng2OrderModule,
     NgxPaginationModule,
-    Ng2SearchPipeModule
+    Ng2SearchPipeModule,
+    NgxPrintModule
   ],
   providers: [],
   bootstrap: [AppComponent]

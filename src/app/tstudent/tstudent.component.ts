@@ -452,19 +452,21 @@ export class TstudentComponent implements OnInit {
 
     //////////////////////////////////////////////////
     let stdntdatarows = [];
+
     let stdntobj = {};
     stdntobj['Counter'] = '747';
     stdntobj['IdStud'] = '5';
     stdntobj['Red_br'] = '2';
-    stdntobj['Code'] = '02';
-    stdntobj['Venice'] = 'Marija';
-    stdntobj['LastName'] = 'Zigfrid';
+    stdntobj['Code'] = this.sstudent_code ;
+    stdntobj['FirstName'] = this.sstudent_firstname;
+    stdntobj['LastName'] = this.sstudent_lastname;
     stdntobj["Address"] ='Germany';
     stdntdatarows[0] = stdntobj;
 
     let gdatarows = [];
     let grow = {};
     grow["Students"] = stdntdatarows;
+
 
     let dumdatarows = [];
     let dumobj = {};
@@ -520,30 +522,33 @@ export class TstudentComponent implements OnInit {
     win.focus();
   }
 
-  uploadaj(ttekst): number {
-    // alert('stampaj');
-    let rslt = 0;
-    let obj = "{ name: 'Dubtavko', Surname: 'Babec', age: 23 }";
 
-    this.dbmongoService.uploadFile(obj)
-      .subscribe(data => {
+  // uploadaj(ttekst): number {
+  //   // alert('stampaj');
+  //   let rslt = 0;
+  //   let obj = "{ name: 'Dubtavko', Surname: 'Babec', age: 23 }";
+  //
+  //   this.dbmongoService.uploadFile(obj)
+  //     .subscribe(data => {
+  //
+  //       this.tdata = data;
+  //       this.tdummy.tekst1 = this.tdata[0].tekst1;
+  //
+  //       const a = this.tdummy.tekst1;
+  //       // b = this.tdummy.tekst2;
+  //       if (a === 'Error') {
+  //         rslt = 1;
+  //         alert('error with upload');
+  //       }
+  //       if (a === 'ok') {
+  //         // alert('update ok');
+  //         rslt = 0;
+  //       }
+  //     });
+  //   return rslt;
+  // }
 
-        this.tdata = data;
-        this.tdummy.tekst1 = this.tdata[0].tekst1;
 
-        const a = this.tdummy.tekst1;
-        // b = this.tdummy.tekst2;
-        if (a === 'Error') {
-          rslt = 1;
-          alert('error with upload');
-        }
-        if (a === 'ok') {
-          // alert('update ok');
-          rslt = 0;
-        }
-      });
-    return rslt;
-  }
 
   stampajjson(): void {
     alert('stampajjson');

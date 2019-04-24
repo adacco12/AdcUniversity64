@@ -37,6 +37,7 @@ studentsRoutes.route('/add').post(function (req, res) {
 
 // Defined get data(index or listing) route
 studentsRoutes.route('/:tdatabase').get(function (req, res) {
+  //getStudents
 
   //const mngDB = 'mongodb://localhost:27017/university01';
 
@@ -201,8 +202,9 @@ studentsRoutes.route('/update2/:tdatabase/:id').get(function (req, res) {
 });
 
 
-studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:age/:vreme').get(function (req, res) {
-  let tdatabase = 'AdcUniversity2';
+studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:age/:vreme/:tdatabase').get(function (req, res) {
+  //let tdatabase = 'AdcUniversity2';
+  let tdatabase = req.params.tdatabase;
   connect(tdatabase);
 
   const tid = req.params.id;
@@ -342,6 +344,8 @@ studentsRoutes.route('/addStudent/:tdatabase/:id').get(function (req, res) {
   tstudent.Code = '';
   tstudent.FirstName = 'novi';
 
+  //StntModel.find(tquery, function (err, fndstudent)  {
+
   tstudent.save()
     .then(tstudent => {
       //res.status(200).json({ 'student': 'student in added successfully' });
@@ -353,8 +357,9 @@ studentsRoutes.route('/addStudent/:tdatabase/:id').get(function (req, res) {
       var rows = new Array();
 
       rows[0] = dummymyObj;
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      resolve(res.status(200).json(rows));
+      //res.setHeader('Access-Control-Allow-Origin', '*');
+      //resolve(res.status(200).json(rows));
+      res.json(rows);
     })
     .catch(err => {
       //res.status(400).send("unable to save to database");
@@ -366,12 +371,54 @@ studentsRoutes.route('/addStudent/:tdatabase/:id').get(function (req, res) {
       var rows = new Array();
 
       rows[0] = dummymyObj;
-      res.setHeader('Access-Control-Allow-Origin', '*');
-      reject(res.status(200).json(rows));
+      //res.setHeader('Access-Control-Allow-Origin', '*');
+      //reject(res.status(200).json(rows));
+      res.json(rows);
     });
 
 });
 
+
+studentsRoutes.route('/deleteStudent/:tdatabase/:id').get(function (req, res) {
+  let tdatabase = req.params.tdatabase;
+  connect(tdatabase);
+  const tIdStud = req.params.id;
+
+  //let tstudent = new StntModel(req.body);
+
+  StntModel.deleteMany({ IdStud: tIdStud }, function (err, data) {
+  //StntModel.deleteMany({ IdStud:9 }, function (err, data) {
+    //StntModel.findByIdAndRemove({ IdStud: req.params.id }, function (err, student) {
+    if (err) {
+      Odgovor = 'Error';
+
+      dummymyObj = new Object();
+      dummymyObj.tekst1 = Odgovor;
+      dummymyObj.tekst2 = err.toString();
+      var rows = new Array();
+
+      rows[0] = dummymyObj;
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      //reject(res.status(200).json(rows));
+      res.json(rows);
+    } else {
+      Odgovor = 'ok obrisano';
+
+      dummymyObj = new Object();
+      dummymyObj.tekst1 = Odgovor;
+      dummymyObj.tekst2 = "";
+      var rows = new Array();
+
+      rows[0] = dummymyObj;
+      res.setHeader('Access-Control-Allow-Origin', '*');
+      //resolve(res.status(200).json(rows));
+      res.json(rows);
+    }
+  });
+
+});
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Defined edit route
 //:tdatabase/:startindex
@@ -410,6 +457,8 @@ studentsRoutes.route('/delete/:tdatabase/:id').get(function (req, res) {
   });
 });
 
+//////////////////////////////////////////////////////////////////////////////////////////////
+
 studentsRoutes.route('/upload/:ttekst').get(function (req, res) {
   const ttekst = req.params.ttekst;
 
@@ -437,7 +486,8 @@ studentsRoutes.route('/upload/:ttekst').get(function (req, res) {
 
       rows[0] = dummymyObj;
       res.setHeader('Access-Control-Allow-Origin', '*');
-      reject(res.status(200).json(rows));
+      //reject(res.status(200).json(rows));
+      res.json(rows);
     } else {
       Odgovor = 'ok dodato';
 
@@ -448,7 +498,8 @@ studentsRoutes.route('/upload/:ttekst').get(function (req, res) {
 
       rows[0] = dummymyObj;
       res.setHeader('Access-Control-Allow-Origin', '*');
-      resolve(res.status(200).json(rows));
+      //resolve(res.status(200).json(rows));
+      res.json(rows);
     }
 
     //console.log("The file was saved!!");

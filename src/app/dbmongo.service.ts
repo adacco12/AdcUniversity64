@@ -27,6 +27,7 @@ export class DbmongoService {
   UrladdStudent = 'http://' + this.globv.THOST + ':4001/studenti/addStudent/';
   UrlGetStudent = 'http://' + this.globv.THOST + ':4001/studenti/GetStudent/';
   UrlUpdateStudent = 'http://' + this.globv.THOST + ':4001/studenti/updateStudent/';
+  UrlBrisiStudent = 'http://' + this.globv.THOST + ':4001/studenti/deleteStudent/';
 
   UrlUpload = 'http://' + this.globv.THOST + ':4001/studenti/upload/';
 
@@ -84,6 +85,20 @@ export class DbmongoService {
     return this.http.get<Dummy[]>(turl);
   }
 
+  brisiStudenta(tdatabase: string, id: number): Observable<Dummy[]> {
+    //let turl = `${this.UrladdStudent}`;
+    let turl = this.UrlBrisiStudent;
+    turl = turl  + tdatabase;
+    turl = turl + '/' + id.toString();
+
+    // let turl = 'http://' + this.globv.THOST +  ':4001/student/addStudent/';
+    // turl = turl +  tdatabase;
+    // turl = turl + '/' + id.toString();
+
+    const a = this.http.get<Dummy[]>(turl);
+    return this.http.get<Dummy[]>(turl);
+  }
+
   uzmiStudenta(id: number, tdatabase: string): Observable<Student[]> {
     let turl = `${this.UrlGetStudent}${id}`;
     turl = turl + '/' + tdatabase;
@@ -91,7 +106,7 @@ export class DbmongoService {
     return this.http.get<Student[]>(turl);
   }
 
-  updejtajStudenta(id: number, code: string, prezime: string, ime: string, address: string, email: string, age: number, vreme: string ): Observable<Dummy[]> {
+  updejtajStudenta(id: number, code: string, prezime: string, ime: string, address: string, email: string, age: number, vreme: string,  tdatabase: string ): Observable<Dummy[]> {
 
     // alert('updejtajStudenta n');
     if (address === '') { address = ' '; }
@@ -104,6 +119,7 @@ export class DbmongoService {
     turl = turl + '/' + email;
     turl = turl + '/' + age;
     turl = turl + '/' + vreme;
+    turl = turl + '/' + tdatabase;
     const a = this.http.get<Dummy[]>(turl);
     return this.http.get<Dummy[]>(turl);
 

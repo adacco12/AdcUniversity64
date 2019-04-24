@@ -130,7 +130,8 @@ export class Liststudents2Component implements AfterViewInit  {
         // this.brisiRed();
         const noviiidstud = Number(this.globv.noviidstud) + 1;
         // const noviiidstud2 = noviiidstud.toString();
-        this.dbService.brisiStudenta(noviiidstud)
+        // this.dbService.brisiStudenta(noviiidstud)
+        this.dbmongoService.brisiStudenta(this.globv.tIMEMDB, noviiidstud)
           .subscribe(data => {
             this.refreshgrid();
 
@@ -312,7 +313,7 @@ export class Liststudents2Component implements AfterViewInit  {
     // if (typeof (this.tstdnt.FirstName) === 'undefined') {this.tstdnt.FirstName = '_';}
     // if (typeof (this.tstdnt.LastName) === 'undefined') {this.tstdnt.LastName = '_';
 
-    this.dbmongoService.updejtajStudenta(tIdStud, this.tstdnt.Code, this.tstdnt.LastName, this.tstdnt.FirstName, this.tstdnt.Address, this.tstdnt.Email, Number(this.tstdnt.Age), this.tstdnt.EnrDate)
+    this.dbmongoService.updejtajStudenta(tIdStud, this.tstdnt.Code, this.tstdnt.LastName, this.tstdnt.FirstName, this.tstdnt.Address, this.tstdnt.Email, Number(this.tstdnt.Age), this.tstdnt.EnrDate, this.globv.tIMEMDB)
       .subscribe(data => {
 
         this.refreshgrid();
@@ -333,14 +334,14 @@ export class Liststudents2Component implements AfterViewInit  {
   }
 
 
-  upgrade2(): any {
-    //test
-    this.http.get('http://' + 'localhost' + ':4001/studenti/update2/AdcUniversity2/2', {responseType: 'text'})
-      .subscribe((data) => {
-
-        alert(data.toString() + 'ff');
-      });
-  }
+  // upgrade2(): any {
+  //   //test
+  //   this.http.get('http://' + 'localhost' + ':4001/studenti/update2/AdcUniversity2/2', {responseType: 'text'})
+  //     .subscribe((data) => {
+  //
+  //       alert(data.toString() + 'ff');
+  //     });
+  // }
 
   public dodajStudenta(): any {
 
@@ -475,7 +476,7 @@ export class Liststudents2Component implements AfterViewInit  {
 
     // alert('brisem' + tidbroj);
 
-    this.dbService.brisiStudenta(tidbroj)
+    this.dbmongoService.brisiStudenta(this.globv.tIMEMDB, tidbroj)
       .subscribe(data => {
         this.refreshgrid();
 

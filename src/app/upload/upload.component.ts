@@ -5,7 +5,7 @@ import {HttpClient} from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
 const domena = 'www.adacco.com';
-// -const domena = 'localhost';
+// const domena = 'localhost';
 let URL = 'http://' + domena + ':3000/api/upload';
 
 @Component({

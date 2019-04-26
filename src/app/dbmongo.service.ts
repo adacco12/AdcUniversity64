@@ -72,28 +72,18 @@ export class DbmongoService {
   }
 
   dodajStudentaUBazu(tdatabase: string, id: number): Observable<Dummy[]> {
-    //let turl = `${this.UrladdStudent}`;
     let turl = this.UrladdStudent;
     turl = turl  + tdatabase;
     turl = turl + '/' + id.toString();
-
-    // let turl = 'http://' + this.globv.THOST +  ':4001/student/addStudent/';
-    // turl = turl +  tdatabase;
-    // turl = turl + '/' + id.toString();
 
     const a = this.http.get<Dummy[]>(turl);
     return this.http.get<Dummy[]>(turl);
   }
 
   brisiStudenta(tdatabase: string, id: number): Observable<Dummy[]> {
-    //let turl = `${this.UrladdStudent}`;
     let turl = this.UrlBrisiStudent;
     turl = turl  + tdatabase;
     turl = turl + '/' + id.toString();
-
-    // let turl = 'http://' + this.globv.THOST +  ':4001/student/addStudent/';
-    // turl = turl +  tdatabase;
-    // turl = turl + '/' + id.toString();
 
     const a = this.http.get<Dummy[]>(turl);
     return this.http.get<Dummy[]>(turl);

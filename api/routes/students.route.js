@@ -180,7 +180,7 @@ studentsRoutes.route('/update2/:tdatabase/:id').get(function (req, res) {
 
   //age: { $gte: 18 }
   //var tquery = { IdStud: { $gte: 5 } };  //veći od 5
-  var tquery = { IdStud: '5' }; 
+  var tquery = { IdStud: '5' };
 
   //StntModel.findById(tid, function (err, fndstudent) {
   StntModel.find(tquery, function (err, fndstudent) {
@@ -217,12 +217,12 @@ studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:ag
   const tvreme = req.params.vreme;
 
   var tnvreme = "_";
-  var sdtt = tvreme; 
+  var sdtt = tvreme;
   var ndtt = sdtt.replace(/-/g, '/')
   let d = new Date(ndtt);
 
   const timestamp = Date.parse(ndtt);
-    
+
   if (isNaN(timestamp) === false) {
     d = new Date(timestamp);
     //"YYYY-mm-dd HH:MM:SS"
@@ -247,7 +247,7 @@ studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:ag
       fndstudent[0].EnrDate = tvreme;
       fndstudent[0].Address = taddress;
       fndstudent[0].Age = tage;
-      
+
 
       fndstudent[0].save()
         .then(fndstudent => {
@@ -278,7 +278,7 @@ studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:ag
               res2.json(rows2);
         });
 
-    
+
 
     }
   });
@@ -302,7 +302,7 @@ studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:ag
 
   //  new sql.ConnectionPool(config).connect().then(pool => {
   //    return pool.request().query(rowUpgradeQuery)
-  //  }).then(result => {      
+  //  }).then(result => {
 
   //    Odgovor = 'ok';
 
@@ -342,7 +342,7 @@ studentsRoutes.route('/addStudent/:tdatabase/:id').get(function (req, res) {
   let tstudent = new StntModel(req.body);
   tstudent.IdStud = tIdStud;
   tstudent.Code = '';
-  tstudent.FirstName = 'novi';
+  tstudent.FirstName = '';
 
   //StntModel.find(tquery, function (err, fndstudent)  {
 

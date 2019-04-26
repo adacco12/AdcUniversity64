@@ -26,7 +26,7 @@ import { DbmongoService } from '../dbmongo.service';
 })
 
 export class Liststudents2Component implements AfterViewInit  {
-  public checkStatus: Boolean;
+  public checkStatus: boolean;
 
   globv = environment;
 
@@ -167,34 +167,6 @@ export class Liststudents2Component implements AfterViewInit  {
     this.myGrid.showloadelement();
   }
 
-  // public generate3s(): any {
-  //   this.dbService.getStudents(this.ttImeMdb)
-  //     .subscribe(data => {
-  //       let datagStudentiGrid = [];
-  //
-  //       this.tdata = data;
-  //       let i = 0;
-  //
-  //       $.map(this.tdata, function (item) {
-  //         // Map(this.tdata, function (item) {
-  //         let row = {};
-  //         row[0] = item.IdStud;
-  //         row[1] = item.Code;
-  //         row[2] = item.FirstName;
-  //         row[3] = item.LastName;
-  //
-  //         datagStudentiGrid[i] = row;
-  //         i = i + 1;
-  //       });
-  //
-  //       this.data = datagStudentiGrid;
-  //
-  //       this.tsource.localdata = this.data;
-  //       this.myGrid.source = this.tsource;
-  //       this.myGrid.updatebounddata();
-  //
-  //     });
-  // }
 
   public generate3(): any {
 
@@ -271,14 +243,40 @@ export class Liststudents2Component implements AfterViewInit  {
         this.tdata = data;
 
         this.tstdnt.IdStud = this.tdata[0].IdStud;
-        this.tstdnt.Code = this.tdata[0].Code;
+        // this.tstdnt.Code = this.tdata[0].Code;
+        if (this.tdata[0].Code  === null || this.tdata[0].Code  === undefined || this.tdata[0].Code  === 'undefined') {
+          this.tstdnt.Code = '';
+        } else {
+          this.tstdnt.Code = this.tdata[0].Code;
+        }
         this.tstdnt.FirstName = this.tdata[0].FirstName;
         this.tstdnt.LastName = this.tdata[0].LastName;
 
-        this.tstdnt.EnrDate = this.tdata[0].EnrDate;
-        this.tstdnt.Email = this.tdata[0].Email;
-        this.tstdnt.Address = this.tdata[0].Address;
-        this.tstdnt.Age = this.tdata[0].Age;
+        // this.tstdnt.EnrDate = this.tdata[0].EnrDate;
+        if (this.tdata[0].EnrDate  === null || this.tdata[0].EnrDate  === undefined || this.tdata[0].EnrDate  === 'undefined') {
+          this.tstdnt.EnrDate = '';
+        } else {
+          this.tstdnt.EnrDate = this.tdata[0].EnrDate;
+        }
+
+        // this.tstdnt.Email = this.tdata[0].Email;
+        if (this.tdata[0].Email  === null || this.tdata[0].Email  === undefined || this.tdata[0].Email  === 'undefined') {
+          this.tstdnt.Email = '';
+        } else {
+          this.tstdnt.Email = this.tdata[0].Email;
+        }
+
+        if (this.tdata[0].Address  === null || this.tdata[0].Address  === undefined || this.tdata[0].Address  === 'undefined') {
+          this.tstdnt.Address = '';
+        } else {
+          this.tstdnt.Address = this.tdata[0].Address;
+        }
+        if (this.tdata[0].Age  === null || this.tdata[0].Age  === undefined || this.tdata[0].Age  === 'undefined') {
+          this.tstdnt.Age = '';
+        } else {
+          this.tstdnt.Age = this.tdata[0].Age;
+        }
+
 
         this.router.navigate(['/tstudent']);
       });

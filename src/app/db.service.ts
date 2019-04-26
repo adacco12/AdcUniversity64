@@ -52,7 +52,7 @@ export class DbService {
       'Black Tea', 'Green Tea', 'Caffe Espresso', 'Doubleshot Espresso',
       'Caffe Latte', 'White Chocolate Mocha', 'Cramel Latte',
       'Caffe Americano', 'Cappuccino', 'Espresso Truffle',
-      'Espresso con Panna', 'Peppermint Mocha Twist'
+      'Espresso con Panna', 'Peppermint Mocha Tplowist'
     ];
   priceValues: string[] =
     [

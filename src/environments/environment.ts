@@ -33,7 +33,7 @@ export const environment = {
   toffset: 0,
   tsearchstring: '',
   THOST: 'localhost',
-  //THOST: 'www.adacco.com'
+  // THOST: 'www.adacco.com'
 };
 
 /*

@@ -124,7 +124,7 @@ export class TstudentComponent implements OnInit {
     this.sstudent_age = selectedStudent.Age;
     this.emll = this.sstudent_email;
     // if (typeof this.sstudent_enrdate  !== 'undefined') {
-    if (this.sstudent_enrdate  === null || this.sstudent_enrdate  === undefined) {
+    if (this.sstudent_enrdate  === null || this.sstudent_enrdate  === undefined || this.sstudent_enrdate  === '' || this.sstudent_enrdate  === 'undefined') {
       this.ssdatum = {date: null};
     } else {
       // const tparseddate = Date.parse(this.sstudent_enrdate);
@@ -217,7 +217,7 @@ export class TstudentComponent implements OnInit {
 
     // const a = this.ssdatum.formatted;
     // alert(a);
-    if (this.ssdatum !== null && this.ssdatum  !== undefined) {
+    if (this.ssdatum !== null && this.ssdatum  !== undefined && this.ssdatum  !== '') {
       if (this.ssdatum.date !== null && this.ssdatum.date !== undefined) {
         const sdtt = this.ssdatum.date;
         // const ndtt = sdtt.replace(/\//g, '-')

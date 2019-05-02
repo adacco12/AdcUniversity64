@@ -1,4 +1,6 @@
-<div class="profile-home">
+<!--<form autocomplete="off">-->
+
+  <div class="profile-home">
 
   <div class="container">
     <div class="row trow">
@@ -59,7 +61,9 @@
                   <label [hidden]="!edited" class="oplabel" style="margin-top: 5px">Age </label>
                 </div>
                 <div style="float: right; width: calc(100% - 200px);">
-                  <input type="text" [(ngModel)]="sstudent_age" class="form-control" id="ageInput" placeholder="Age" (keypress)="numberOnly($event)" maxlength="3">
+                  <input #age type="text" [(ngModel)]="sstudent_age" class="form-control" id="ageInput" placeholder="Age" (keypress)="numberOnly($event)" maxlength="3"
+                         readonly="readonly" onfocus="javascript: this.removeAttribute('readonly')"
+                  >
                 </div>
               </div>
 
@@ -170,6 +174,7 @@
            [theme]="'material'"
            [width]="260"
            [height]="170"
+           [draggable]="false"
            [resizable]="false"
            [cancelButton]="'.cancelButton'"
            [isModal]="true"
@@ -201,6 +206,7 @@
             [width]="460"
             [height]="270"
             [resizable]="false"
+            [draggable]="false"
             [cancelButton]="'.cancelButton'"
             [isModal]="true"
             [autoOpen]="false"
@@ -342,6 +348,7 @@
   <p style="font-size:x-large">2131</p>
 </div>
 
+<!--</form>-->
 
 
 

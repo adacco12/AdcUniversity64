@@ -48,6 +48,8 @@ studentsRoutes.route('/:tdatabase').get(function (req, res) {
   //);
   let tdatabase = req.params.tdatabase;
 
+  var mysort = { IdStud: 1 };
+
   //connect('university02');
   connect(tdatabase);
 
@@ -58,8 +60,44 @@ studentsRoutes.route('/:tdatabase').get(function (req, res) {
     else {
       res.json(student);
     }
-  });
+  }).sort(mysort);
 });
+
+
+studentsRoutes.route('/GetStudentPage/:tdatabase/:startindex/:endindex/:orderfield/:strwhere').get(function (req, res) {
+  let tdatabase = req.params.tdatabase;
+
+  const tstartindex = req.params.startindex;
+  const tendindex = req.params.endindex;
+  const torderfield = req.params.orderfield;
+  const tstrwhere = req.params.strwhere;
+
+  var poc = parseInt(tstartindex);
+
+  var zav = parseInt(tendindex);
+  var toffset = poc.toString();
+  var tnext = (zav - poc).toString();
+  var inoffset = parseInt(tnext);
+
+  //connect('university02');
+  connect(tdatabase);
+  var mysort = { IdStud: 1 };
+
+  //var tquery = { IdStud: tIdStud};
+  var tquery = {};
+  //var tquery = { limit: 5, skip: 3 };
+
+  StntModel.find(tquery, function (err, tstudents) {
+    if (err) {
+      console.log(err);
+    }
+    else {
+      res.json(tstudents);
+    }
+  }).sort(mysort).skip(poc).limit(inoffset);
+});
+
+
 
 studentsRoutes.route('/getMaxID/:tdatabase').get(function (req, res) {
   let tdatabase = req.params.tdatabase;
@@ -164,6 +202,77 @@ studentsRoutes.route('/GetStudent/:id/:tdatabase').get(function (req, res) {
   });
 
 });
+
+
+studentsRoutes.route('/napuni/:dmm').get(function (req, res) {
+  let dmm = req.params.dmm;
+
+  const sql = require('mssql');
+
+  var config = {
+    user: 'sa',
+    password: 'mJksxnXG#i1',
+    server: '94.127.5.214',
+    database: 'AdcUniversity',
+    driver: 'tedious',
+    options: {
+      //instanceName: 'sql',
+      encrypt: true
+    }
+  };
+
+
+  const tquery = "SELECT * FROM students";
+
+  new sql.ConnectionPool(config).connect().then(pool => {
+      return pool.request().query(tquery)
+  }).then(result => {
+
+      //resolve(result.recordset);
+      //res.send({ result });
+      let rows = result.recordset;
+
+      connect('AdcUniversity');
+      
+      let i = 1;
+      for (let item of rows) {
+        let tstudent = new StntModel(req.body);
+        tstudent.IdStud = i;
+        tstudent.Code = item.Code;
+        tstudent.FirstName = item.FirstName;
+        tstudent.LastName = item.LastName;
+        tstudent.Address = item.Address;
+        tstudent.Email = item.Email;
+        tstudent.Age = item.Age;
+        tstudent.EnrDate = item.EnrDate;
+        i = i + 1;
+        tstudent.save();
+      }
+
+      sql.close();
+  }).catch(err => {
+
+      //reject(err);
+      console.log(err);
+      //reject(res.status(500).send({ message: "${err}" }));
+
+      sql.close();
+  });
+
+  //res.send('napuni');
+  console.log('napuni');
+  dummymyObj = new Object();
+  dummymyObj.tekst1 = 'napunjeno';
+  dummymyObj.tekst2 = "";
+  var rows = new Array();
+  rows[0] = dummymyObj;
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.json(rows);
+  //console.log('radi');
+  //res.send(JSON.stringify({ myObject }));
+  //res.json({ a: 1 });
+});
+
 
 //studentsRoutes.route('/getCountN2/:tdatabase').get(function (req, res) {
 //  let tdatabase = req.params.tdatabase;
@@ -284,6 +393,7 @@ studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:ag
   });
 
 
+
   //var Odgovor = '';
   //var praznaslika = '0xFFD8FFDB00430006040506050406060506070706080A100A0A09090A140E0F0C1017141818171416161A1D251F1A1B231C1616202C20232627292A29191F2D302D283025282928FFDB0043010707070A080A130A0A13281A161A2828282828282828282828282828282828282828282828282828282828282828282828282828282828282828282828282828FFC0001108003A005A03012200021101031101FFC4001500010100000000000000000000000000000008FFC40014100100000000000000000000000000000000FFC40014010100000000000000000000000000000000FFC40014110100000000000000000000000000000000FFDA000C03010002110311003F00AA4000000000000000000000000000000000000000000000000000000000000000000000007FFFD9';
 
@@ -332,6 +442,8 @@ studentsRoutes.route('/updateStudent/:id/:code/:prezime/:ime/:address/:email/:ag
   //  });
 
 });
+
+
 
 
 studentsRoutes.route('/addStudent/:tdatabase/:id').get(function (req, res) {
@@ -517,6 +629,8 @@ studentsRoutes.route('/check').get(function (req, res) {
   //res.json({ a: 1 });
 });
 
+
+
 function connect(databasename) {
   //return new Promise((resolve, reject) => {
   //  fs.access(filepath, fs.F_OK, error => {
@@ -528,7 +642,8 @@ function connect(databasename) {
 
   mongoose.connect(mngDB, { useNewUrlParser: true }).then(
   //mongoose.connect('mongodb://localhost:27017/ng7crud', { useNewUrlParser: true }).then(
-    () => { console.log('Database is connected') },
+    //() => { console.log('Database is connected') },
+    () => { },
     err => { console.log('Can not connect to the database' + err) }
   );
 

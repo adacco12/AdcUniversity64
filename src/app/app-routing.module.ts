@@ -12,7 +12,10 @@ import { TstudentComponent } from './tstudent/tstudent.component';
 import { NgforComponent } from './ngfor/ngfor.component';
 import { GstGetComponent } from './gst-get/gst-get.component';
 import { NotloggedComponent } from './notlogged/notlogged.component';
-
+import { PagingComponent } from './paging/paging.component';
+import { NgxscrollingComponent } from './ngxscrolling/ngxscrolling.component';
+import { NgxvirtpageComponent } from './ngxvirtpage/ngxvirtpage.component';
+import { Ngxvirtpage3Component } from './ngxvirtpage3/ngxvirtpage3.component';
 
 const routes: Routes = [
 
@@ -27,9 +30,14 @@ const routes: Routes = [
       { path: 'home', component: HomeComponent },
       { path: 'notlogged', component: NotloggedComponent },
       { path: 'liststudents2', component: Liststudents2Component },
+      { path: 'paging', component: PagingComponent },
       { path: 'tstudent', component: TstudentComponent },
       { path: 'ngfor', component: NgforComponent },
-      { path: 'gst-get', component: GstGetComponent }
+      { path: 'gst-get', component: GstGetComponent },
+      { path: 'ngxscrolling', component: NgxscrollingComponent },
+      { path: 'ngxvirtpage', component: NgxvirtpageComponent },
+      { path: 'ngxvirtpage3', component: Ngxvirtpage3Component }
+
 
     ]
   }

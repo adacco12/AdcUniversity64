@@ -82,6 +82,7 @@ export class TstudentComponent implements OnInit {
   @ViewChild('scode') inpcode: ElementRef;
   @ViewChild('fname') inpfname: ElementRef;
   @ViewChild('lname') inplname: ElementRef;
+  @ViewChild('age') inpage: ElementRef;
 
   source: string[] = [
     'Form 1',
@@ -121,10 +122,16 @@ export class TstudentComponent implements OnInit {
     this.sstudent_enrdate = selectedStudent.EnrDate;
     this.sstudent_email = selectedStudent.Email;
     this.sstudent_address = selectedStudent.Address;
-    this.sstudent_age = selectedStudent.Age;
+    // this.sstudent_age = selectedStudent.Age;
+    if (selectedStudent.Age !== '0') {
+      if (selectedStudent.Age !== 'NaN') {
+        this.sstudent_age = this.selectedStudent.Age;
+      }
+    }
+
     this.emll = this.sstudent_email;
     // if (typeof this.sstudent_enrdate  !== 'undefined') {
-    if (this.sstudent_enrdate  === null || this.sstudent_enrdate  === undefined || this.sstudent_enrdate  === '' || this.sstudent_enrdate  === 'undefined') {
+    if (this.sstudent_enrdate  === null || this.sstudent_enrdate  === undefined || this.sstudent_enrdate.trim()  === '' || this.sstudent_enrdate  === 'undefined') {
       this.ssdatum = {date: null};
     } else {
       // const tparseddate = Date.parse(this.sstudent_enrdate);
@@ -226,6 +233,19 @@ export class TstudentComponent implements OnInit {
       }
     }
 
+    if (this.sstudent_age !== null && this.sstudent_age  !== undefined && this.sstudent_age  !== '') {
+      if (!this.stringIsNumber(this.sstudent_age)) {
+        this.tfokusiraj = 'age';
+
+        this.tmessage = 'The age is not number.';
+        this.messageWindow.position('center');
+        this.messageWindow.open();
+        return;
+      }
+    }
+
+
+
     this.globv.PONISTI = false;
     this.globv.DIALOGZATVOREN = true;
 
@@ -237,7 +257,10 @@ export class TstudentComponent implements OnInit {
     this.selectedStudent.EnrDate = this.sstudent_enrdate;
     this.selectedStudent.Email = this.sstudent_email;
     this.selectedStudent.Address = this.sstudent_address;
-    this.selectedStudent.Age = this.sstudent_age;
+    // this.selectedStudent.Age = this.sstudent_age;
+    if (this.selectedStudent.Age  === '') {
+      this.sstudent_age = '0';
+    }
     this.location.back();
   }
 
@@ -294,6 +317,9 @@ export class TstudentComponent implements OnInit {
     }
     if (this.tfokusiraj === 'lname') {
       this.inplname.nativeElement.focus();
+    }
+    if (this.tfokusiraj === 'age') {
+      this.inpage.nativeElement.focus();
     }
   }
 
@@ -553,6 +579,12 @@ export class TstudentComponent implements OnInit {
   stampajjson(): void {
     alert('stampajjson');
   }
+
+  stringIsNumber(s) {
+    let x = +s; // made cast obvious for demonstration
+    return x.toString() === s;
+  }
+
 }
 
 

@@ -8,6 +8,7 @@ import { DbmongoService } from '../dbmongo.service';
   styleUrls: ['./gst-get.component.css']
 })
 export class GstGetComponent implements OnInit {
+  filter = '';
 
   tstudenti: Student[];
 

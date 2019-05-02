@@ -28,6 +28,7 @@ export class DbmongoService {
   UrlGetStudent = 'http://' + this.globv.THOST + ':4001/studenti/GetStudent/';
   UrlUpdateStudent = 'http://' + this.globv.THOST + ':4001/studenti/updateStudent/';
   UrlBrisiStudent = 'http://' + this.globv.THOST + ':4001/studenti/deleteStudent/';
+  UrlGetStudentPage = 'http://' + this.globv.THOST + ':4001/studenti/GetStudentPage/';
 
   UrlUpload = 'http://' + this.globv.THOST + ':4001/studenti/upload/';
 
@@ -48,12 +49,17 @@ export class DbmongoService {
     return this.http.get<Student[]>(turl);
   }
 
-  // uzmiStudenta(id: number, tdatabase: string): Observable<Student[]> {
-  //   let turl = `${this.UrlGetStudent}${id}`;
-  //   turl = turl + '/' + tdatabase;
-  //   const a = this.http.get<Student[]>(turl);
-  //   return this.http.get<Student[]>(turl);
-  // }
+  getStudentsPage(tdatabase: string, tstartindex: string, tendindex: string, torder: string, twhere: string): Observable<Student[]> {
+    let turl = `${this.UrlGetStudentPage}`;
+    turl = turl + tdatabase;
+    turl = turl + '/' + tstartindex;
+    turl = turl + '/' + tendindex;
+    turl = turl + '/' + torder;
+    turl = turl + '/' + twhere;
+
+    const a = this.http.get<Student[]>(turl);
+    return this.http.get<Student[]>(turl);
+  }
 
   dajMaksIdStud(tdatabase: string): Observable<Dummy[]> {
     let turl = `${this.UrlgetMaxID}`;
@@ -100,6 +106,7 @@ export class DbmongoService {
 
     // alert('updejtajStudenta n');
     if (address === '') { address = ' '; }
+    if (vreme === '') { vreme = ' '; }
 
     let turl = `${this.UrlUpdateStudent}${id}`;
     turl = turl + '/' + code;

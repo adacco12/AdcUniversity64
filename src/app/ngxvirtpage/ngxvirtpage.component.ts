@@ -1,6 +1,6 @@
 import {Component, Inject, OnInit, ViewChild} from '@angular/core';
 import {Page} from '../model/page';
-import {PagedServiceService} from '../paged-service.service';
+// import {PagedServiceService} from '../paged-service.service';
 import {Cstudent} from '../model/cstudent';
 import { DbService } from '../db.service';
 import * as $ from 'jquery';
@@ -13,12 +13,18 @@ import {Dummy} from '../dummy.service';
 import {Student} from '../student.service';
 import {Router} from '@angular/router';
 
+import { DbmongoService } from '../dbmongo.service';
+import {PagedMongoService} from '../paged-mongo.service';
+
+
 @Component({
   selector: 'app-ngxvirtpage',
   templateUrl: './ngxvirtpage.component.html',
   styleUrls: ['./ngxvirtpage.component.css']
 })
 export class NgxvirtpageComponent implements OnInit {
+  public ttImeMdb = 'AdcUniversity2';
+
   globv = environment;
   isLoading: boolean;
 
@@ -49,8 +55,9 @@ export class NgxvirtpageComponent implements OnInit {
 
   constructor(
     @Inject(LOCAL_STORAGE) private storage: StorageService,
-    private serverResultsService: PagedServiceService,
+    private serverResultsService: PagedMongoService,
     private dbService: DbService,
+    private dbmongoService: DbmongoService,
     public selectedStudent: Student,
     public dekl: Dekl,
     public tdummy: Dummy,
@@ -63,7 +70,7 @@ export class NgxvirtpageComponent implements OnInit {
 
   setPage(pageInfo){
     this.page.pageNumber = pageInfo.offset;
-    this.serverResultsService.getResults(this.page).subscribe(pagedData => {
+    this.serverResultsService.getResults(this.page, this.ttImeMdb).subscribe(pagedData => {
       this.page = pagedData.page;
       this.rows = pagedData.data;
 
@@ -75,7 +82,11 @@ export class NgxvirtpageComponent implements OnInit {
     });
   }
 
+
+
   ngOnInit() {
+    this.ttImeMdb = this.storage.get('ime_mdb');
+
     if (this.storage.get('member_name') ===  null) {
       this.router.navigate(['notlogged']);
       return;
@@ -136,7 +147,7 @@ export class NgxvirtpageComponent implements OnInit {
         // this.brisiRed();
         const noviiidstud = Number(this.globv.noviidstud) + 1;
         // const noviiidstud2 = noviiidstud.toString();
-        this.dbService.brisiStudenta(noviiidstud)
+        this.dbmongoService.brisiStudenta(this.globv.tIMEMDB, noviiidstud)
           .subscribe(data => {
             // this.refreshgrid();
             this.updateTable()
@@ -208,7 +219,7 @@ export class NgxvirtpageComponent implements OnInit {
 
     for (let i = 0 ; i < rowsAmt ; i++) {
       // check for a match
-      if (this.rows[i].IdStud === tIdStud.toString() ){
+      if (this.rows[i].IdStud.toString() === tIdStud.toString() ){
         // found match, return true to add to result set
         return i;
       }
@@ -249,7 +260,8 @@ export class NgxvirtpageComponent implements OnInit {
     this.globv.tselind = rowindex;
     this.globv.toffset = this.page.pageNumber;
 
-    this.dbService.uzmiStudenta(tidbroj, this.globv.tIMEMDB)
+    // this.dbService.uzmiStudenta(tidbroj, this.globv.tIMEMDB)
+    this.dbmongoService.uzmiStudenta(tidbroj, this.globv.tIMEMDB)
       .subscribe(data => {
         this.tdata = data;
 
@@ -284,10 +296,8 @@ export class NgxvirtpageComponent implements OnInit {
     // if (typeof (this.tstdnt.FirstName) === 'undefined') {this.tstdnt.FirstName = '_';}
     // if (typeof (this.tstdnt.LastName) === 'undefined') {this.tstdnt.LastName = '_';
 
-    this.dbService.updejtajStudenta(tIdStud, this.tstdnt.Code, this.tstdnt.LastName, this.tstdnt.FirstName, this.tstdnt.Address, this.tstdnt.Email, Number(this.tstdnt.Age), this.tstdnt.EnrDate)
+    this.dbmongoService.updejtajStudenta(tIdStud, this.tstdnt.Code, this.tstdnt.LastName, this.tstdnt.FirstName, this.tstdnt.Address, this.tstdnt.Email, Number(this.tstdnt.Age), this.tstdnt.EnrDate, this.globv.tIMEMDB)
       .subscribe(data => {
-
-        // let datagStudentiGrid = [];
 
         //this.generate3();
         this.tdata = data;
@@ -366,7 +376,7 @@ export class NgxvirtpageComponent implements OnInit {
 
     // alert('brisem' + tidbroj);
 
-    this.dbService.brisiStudenta(tidbroj)
+    this.dbmongoService.brisiStudenta(this.globv.tIMEMDB, tidbroj)
       .subscribe(data => {
         // this.Refresh();
         // this.generate3();
@@ -451,7 +461,7 @@ export class NgxvirtpageComponent implements OnInit {
 
   public dodajStudenta(): any {
 
-    this.dbService.dajMaksIdStud()
+    this.dbmongoService.dajMaksIdStud(this.ttImeMdb)
       .subscribe(data => {
 
         this.tdata = data;
@@ -483,7 +493,7 @@ export class NgxvirtpageComponent implements OnInit {
       return;
     } else {
 
-      this.dbService.dajCountStud(this.globv.tIMEMDB)
+      this.dbmongoService.dajCountStud(this.globv.tIMEMDB)
         .subscribe(data => {
           this.tdata = data;
           this.tdummy.tekst1 = this.tdata[0].tekst1;
@@ -523,7 +533,7 @@ export class NgxvirtpageComponent implements OnInit {
       return;
     } else {
 
-      this.dbService.dodajStudentaUBazu(noviStud)
+      this.dbmongoService.dodajStudentaUBazu(this.globv.tIMEMDB, noviStud)
         .subscribe(data => {
           // this.refreshgrid();
           // this.generate3();
@@ -571,22 +581,21 @@ export class NgxvirtpageComponent implements OnInit {
   }
 
   ukbroj(): any {
-    const a = this.DajUkbr();
+    const a = this.DajUkbr(this.ttImeMdb);
     const uk = a[0].count;
     return uk;
   }
 
-  DajUkbr(): any[] {
+  DajUkbr(tdatabase: string): any[] {
+    let UrlgetCountN = 'http://' + this.globv.THOST + ':4001/studenti/getCountN/';
+    let turl = `${UrlgetCountN}`;
+    turl = turl  + tdatabase;
+
     let i = 0;
     let ukPodaci = [];
     $.ajax({
-      url: 'http://' + this.globv.THOST + ':8089/api/getCount/',
-      // data: '{timebaze: "' + this.globv.tIMEMDB  + '" }',
-      // data: '1 "' + this.globv.tIMEMDB + '" 2',
-
-      // data: 'timebaze:"' + this.globv.tIMEMDB  + '"',
-      // data: '1:"' + this.globv.tIMEMDB + '", 2: "abcd"',
-      data: {timebaze: this.globv.tIMEMDB, Name: 'zeljko', Adresa: 'ilica 4'},
+      url: turl,
+      data: {},
       cache: false,
       timeout: 5000,
       async: false,
@@ -607,7 +616,7 @@ export class NgxvirtpageComponent implements OnInit {
         });
         const a = 0;
       },
-      error: function (jqXHR, textStatus, errorThrown) {
+      error : function (jqXHR, textStatus, errorThrown) {
         alert('error -01 - ' + textStatus + ' ' + errorThrown);
       }
     })

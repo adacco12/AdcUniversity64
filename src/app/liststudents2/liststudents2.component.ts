@@ -234,7 +234,7 @@ export class Liststudents2Component implements AfterViewInit  {
       return;
     }
 
-    this.globv.NOVI = true;
+    // this.globv.NOVI = true;
 
     this.globv.tselind = rowindex;
 
@@ -272,7 +272,7 @@ export class Liststudents2Component implements AfterViewInit  {
           this.tstdnt.Address = this.tdata[0].Address;
         }
         if (this.tdata[0].Age  === null || this.tdata[0].Age  === undefined || this.tdata[0].Age  === 'undefined') {
-          this.tstdnt.Age = '';
+          this.tstdnt.Age = '0';
         } else {
           this.tstdnt.Age = this.tdata[0].Age;
         }

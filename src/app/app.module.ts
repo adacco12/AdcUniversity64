@@ -40,6 +40,10 @@ import { UploadComponent } from './upload/upload.component';
 import { NgforComponent } from './ngfor/ngfor.component';
 import { GstGetComponent } from './gst-get/gst-get.component';
 import { NotloggedComponent } from './notlogged/notlogged.component';
+import { PagingComponent } from './paging/paging.component';
+import { NgxscrollingComponent } from './ngxscrolling/ngxscrolling.component';
+import { NgxvirtpageComponent } from './ngxvirtpage/ngxvirtpage.component';
+import { Ngxvirtpage3Component } from './ngxvirtpage3/ngxvirtpage3.component';
 
 
 @NgModule({
@@ -62,7 +66,11 @@ import { NotloggedComponent } from './notlogged/notlogged.component';
     UploadComponent,
     NgforComponent,
     GstGetComponent,
-    NotloggedComponent
+    NotloggedComponent,
+    PagingComponent,
+    NgxscrollingComponent,
+    NgxvirtpageComponent,
+    Ngxvirtpage3Component
   ],
   imports: [
     BrowserModule,

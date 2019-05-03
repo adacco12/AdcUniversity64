@@ -17,6 +17,16 @@ import { NgxscrollingComponent } from './ngxscrolling/ngxscrolling.component';
 import { NgxvirtpageComponent } from './ngxvirtpage/ngxvirtpage.component';
 import { Ngxvirtpage3Component } from './ngxvirtpage3/ngxvirtpage3.component';
 
+import { About0Component } from './about0/about0.component';
+
+import { NovakComponent } from './About/novak/novak.component';
+import { NadalComponent } from './About/nadal/nadal.component';
+import { ArianaComponent } from './About/ariana/ariana.component';
+import { FedererComponent } from './About/federer/federer.component';
+import { LayoutComponent } from './About/layout/layout.component';
+import { LeftSideComponent } from './About/left-side/left-side.component';
+
+
 const routes: Routes = [
 
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -36,7 +46,19 @@ const routes: Routes = [
       { path: 'gst-get', component: GstGetComponent },
       { path: 'ngxscrolling', component: NgxscrollingComponent },
       { path: 'ngxvirtpage', component: NgxvirtpageComponent },
-      { path: 'ngxvirtpage3', component: Ngxvirtpage3Component }
+      { path: 'ngxvirtpage3', component: Ngxvirtpage3Component },
+      { path: '', component: LayoutComponent,
+        children: [
+          { path: '', component: NovakComponent, pathMatch: 'full'},
+          { path: 'novak', component: NovakComponent },
+          { path: 'ariana', component: ArianaComponent },
+          { path: 'federer', component: FedererComponent },
+          { path: 'nadal', component: NadalComponent }
+
+        ]
+      },
+      { path: 'about0', component: About0Component },
+
 
 
     ]

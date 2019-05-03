@@ -44,6 +44,13 @@ import { PagingComponent } from './paging/paging.component';
 import { NgxscrollingComponent } from './ngxscrolling/ngxscrolling.component';
 import { NgxvirtpageComponent } from './ngxvirtpage/ngxvirtpage.component';
 import { Ngxvirtpage3Component } from './ngxvirtpage3/ngxvirtpage3.component';
+import { NovakComponent } from './About/novak/novak.component';
+import { NadalComponent } from './About/nadal/nadal.component';
+import { ArianaComponent } from './About/ariana/ariana.component';
+import { FedererComponent } from './About/federer/federer.component';
+import { LayoutComponent } from './About/layout/layout.component';
+import { LeftSideComponent } from './About/left-side/left-side.component';
+import { About0Component } from './about0/about0.component';
 
 
 @NgModule({
@@ -70,7 +77,14 @@ import { Ngxvirtpage3Component } from './ngxvirtpage3/ngxvirtpage3.component';
     PagingComponent,
     NgxscrollingComponent,
     NgxvirtpageComponent,
-    Ngxvirtpage3Component
+    Ngxvirtpage3Component,
+    NovakComponent,
+    NadalComponent,
+    ArianaComponent,
+    FedererComponent,
+    LayoutComponent,
+    LeftSideComponent,
+    About0Component
   ],
   imports: [
     BrowserModule,

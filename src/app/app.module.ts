@@ -9,6 +9,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 import {FileUploadModule} from 'ng2-file-upload';
 
+import { Routes, RouterModule } from '@angular/router';
+
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
@@ -51,6 +53,11 @@ import { FedererComponent } from './About/federer/federer.component';
 import { LayoutComponent } from './About/layout/layout.component';
 import { LeftSideComponent } from './About/left-side/left-side.component';
 import { About0Component } from './about0/about0.component';
+import { SajtsearchComponent } from './sajtsearch/sajtsearch.component';
+
+const routes: Routes = [
+
+];
 
 
 @NgModule({
@@ -84,7 +91,8 @@ import { About0Component } from './about0/about0.component';
     FedererComponent,
     LayoutComponent,
     LeftSideComponent,
-    About0Component
+    About0Component,
+    SajtsearchComponent
   ],
   imports: [
     BrowserModule,
@@ -100,7 +108,8 @@ import { About0Component } from './about0/about0.component';
     Ng2OrderModule,
     NgxPaginationModule,
     Ng2SearchPipeModule,
-    NgxPrintModule
+    NgxPrintModule,
+    RouterModule.forRoot(routes, { useHash: true })
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -25,6 +25,7 @@ import { ArianaComponent } from './About/ariana/ariana.component';
 import { FedererComponent } from './About/federer/federer.component';
 import { LayoutComponent } from './About/layout/layout.component';
 import { LeftSideComponent } from './About/left-side/left-side.component';
+import { SajtsearchComponent } from './sajtsearch/sajtsearch.component';
 
 
 const routes: Routes = [
@@ -58,8 +59,7 @@ const routes: Routes = [
         ]
       },
       { path: 'about0', component: About0Component },
-
-
+      { path: 'sajtsearch', component: SajtsearchComponent },
 
     ]
   }

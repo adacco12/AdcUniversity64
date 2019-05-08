@@ -38,11 +38,11 @@ export class NgforComponent implements OnInit {
   // sorting
   key: string = 'IdStud'; //  'name'; //set default
   reverse: boolean = false;
+
   sort(key) {
     this.key = key;
     this.reverse = !this.reverse;
   }
-
 
 
   constructor(
@@ -54,10 +54,11 @@ export class NgforComponent implements OnInit {
     public dekl: Dekl,
     public tdummy: Dummy,
     public tstdnt: Student
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    if (this.storage.get('member_name') ===  null) {
+    if (this.storage.get('member_name') === null) {
       this.router.navigate(['notlogged']);
       return;
     }
@@ -68,10 +69,12 @@ export class NgforComponent implements OnInit {
 
     this.generate3();
 
-    setTimeout(() => { this.filter = ''; }, 350);
+    setTimeout(() => {
+      this.filter = '';
+    }, 350);
   }
 
-  ngAfterViewInit (): void  {
+  ngAfterViewInit(): void {
 
     // alert('after');
     // this.filter = '';
@@ -108,5 +111,11 @@ export class NgforComponent implements OnInit {
         const c = 0;
       });
   }
+
+  goto(): void {
+    this.p = 2;
+    // alert('goto');
+  }
+
 
 }

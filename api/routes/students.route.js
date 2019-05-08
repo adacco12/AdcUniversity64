@@ -127,11 +127,15 @@ studentsRoutes.route('/getMaxID/:tdatabase').get(function (req, res) {
       //res.json(fndstudent);
 
       var tmaxid = -1;
-      tmaxid = fndstudent[0].IdStud;
+      if (fndstudent.length > 0) {
+        tmaxid = fndstudent[0].IdStud;
 
-
-      if (tmaxid == null) { tmaxid = 0 };
-      Odgovor = 'ok';
+        if (tmaxid == null) { tmaxid = 0 };
+        Odgovor = 'ok';   
+      } else {
+        tmaxid = 0;
+        Odgovor = 'ok';
+      }
 
       dummymyObj = new Object();
       dummymyObj.tekst1 = Odgovor;
@@ -156,7 +160,8 @@ studentsRoutes.route('/getCountN/:tdatabase').get(function (req, res) {
   var query = {};
 
   StntModel.count(query, function (err, c) {
-    if (!c) {
+    //if (!c) {
+    if (typeof c == 'undefined' || c == null) {
       Odgovor = 'Error';
 
       dummymyObj = new Object();

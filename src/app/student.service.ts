@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 
 export class Student {
+
   IdStud: number;
   Code: string;
   FirstName: string;
@@ -15,4 +16,6 @@ export class Student {
   EnrDate: string;
   Address: string;
   Age: string;
+
+  id: string;
 }

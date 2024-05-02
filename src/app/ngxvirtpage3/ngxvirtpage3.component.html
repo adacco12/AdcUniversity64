@@ -1,0 +1,256 @@
+<script src="ngxvirtpage3.component.ts"></script>
+<div class="profile-home">
+
+  <div class="container">
+
+    <!-- Example row of columns -->
+    <div class="row trow">
+
+      <div class="col-sm-12 pr-sm-1 pl-sm-0 mt-2">
+
+        <!--<div class="tdiv tgdiv" style = "background-color: pink">-->
+        <div class="tdiv tgdiv">
+
+          <div class="topdiv">
+            <div id='aNew' class='logitem' (click)="anew()">New</div>
+            <div>
+
+              <ngx-datatable
+                class="bootstrap ngx-datatable01"
+                [rows]="rows"
+                [columnMode]="'force'"
+                [headerHeight]="0"
+                [footerHeight]="'auto'"
+                [externalPaging]="true"
+                [scrollbarH]="false"
+                [rowHeight]="'auto'"
+                [count]="page.totalElements"
+                [offset]="page.pageNumber"
+                (page)='setPage($event)'
+              >
+
+                <ngx-datatable-column name="GlavniTemplate"
+                                      [resizeable]="true"
+                >
+                  <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+
+                    <div style="float:left; width: 103px; min-width: 103px; height:100px; text-align: left">
+                      <div style="padding:2px;">
+                        <div style="width:88px; height:88px; background-color:white; display:flex;align-items:center;justify-content:center;">
+                          <div>
+                            <img style="max-width:80px; height:auto; max-height:80px;" src="{{row.AdresaSlike}}" />
+
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div style="float:left; width: calc(50% - 103px); min-width: 300px; height:67px; text-align: left">
+
+                      <div style="width:90px; float: left; color:#0404B4">First name: </div>
+                      <div  style="float: left;"><strong>{{row['FirstName']}}</strong></div>
+                      <p>
+
+                      <div style="width:90px; clear: both; float: left; color:#0404B4">Last name: </div>
+                      <div style="float: left;"><strong>{{row['LastName']}}</strong></div>
+                      <p>
+
+                      <div style="width:90px; clear: both; float: left; color:#0404B4">Address: </div>'
+                      <div [innerHTML]="row['Address']" style="float: left;"></div>
+                      <p>
+
+                    </div>
+
+                    <div style="float:left; width: calc(50% - 103px); min-width: 300px; height:67px; text-align: left">
+
+                      <div style="width:90px; float: left; color:#0404B4">E-mail: </div>
+                      <div [innerHTML]="row['Email']" style="float: left;"></div>
+                      <p>
+
+                      <div style="width:90px; clear: both; float: left; color:#0404B4">Enroll.date:</div>
+                      <div style="float: left;">{{row['EnrDate'] | date: 'dd MMM yyyy' }}</div>
+                      <p>
+
+                      <div style="width:90px; clear: both;  float: left; color:#0404B4">Age:</div>
+                      <div [innerHTML]="row['Age']" style="float: left;"></div>
+                      <p>
+
+                    </div>
+
+                    <div style="float:left; width: 103px; height:100px; text-align: left">
+                      <div style="width: 78px; height:90px; padding-top:15px; padding-left:16px;  background-color: gainsboro; " >
+                        <div id='aOpen' class='logitem' (click)="aopen(row['IdStud'])">Open</div>
+                        <p>
+                        <div id='aDelete' class='logitem' (click)="adelete(row['IdStud'])">Delete</div>
+                      </div>
+                    </div>
+
+                  </ng-template>
+                </ngx-datatable-column>
+
+
+
+
+                <!--<ngx-datatable-column name="Image"-->
+                <!--prop="AdresaSlike"-->
+                <!--[resizeable]="false"-->
+                <!--[width]="103"-->
+                <!--[minWidth]="103"-->
+                <!--[maxWidth]="103"-->
+                <!--&gt;-->
+                <!--<ng-template let-row="row" let-value="value" ngx-datatable-cell-template >-->
+
+                <!--<div style="padding:2px;">-->
+                <!--<div style="width:88px; height:88px; background-color:white; display:flex;align-items:center;justify-content:center;">-->
+                <!--<div>-->
+                <!--<img style="max-width:80px; height:auto; max-height:80px;" src="{{row.AdresaSlike}}" />-->
+
+                <!--</div>-->
+                <!--</div>-->
+                <!--</div>-->
+
+                <!--</ng-template>-->
+                <!--</ngx-datatable-column>-->
+
+                <!--<ngx-datatable-column name="FirstName"-->
+                <!--[resizeable]="true"-->
+                <!--&gt;-->
+                <!--<ng-template let-row="row" let-value="value" ngx-datatable-cell-template>-->
+
+                <!--<div style="float:left; width: 300px; min-width: 100px; height:100px; text-align: left">-->
+
+                <!--<div style="width:90px; float: left; color:#0404B4">First name: </div>-->
+                <!--&lt;!&ndash;<div [innerHTML]="row['FirstName']" style="float: left;"></div>&ndash;&gt;-->
+                <!--<div  style="float: left;"><strong>{{row['FirstName']}}</strong></div>-->
+                <!--<p>-->
+
+                <!--<div style="width:90px; clear: both; float: left; color:#0404B4">Last name: </div>-->
+                <!--<div style="float: left;"><strong>{{row['LastName']}}</strong></div>-->
+                <!--<p>-->
+
+                <!--<div style="width:90px; clear: both; float: left; color:#0404B4">Address: </div>'-->
+                <!--<div [innerHTML]="row['Address']" style="float: left;"></div>-->
+                <!--<p>-->
+
+                <!--</div>-->
+
+                <!--<div style="float:left; width: 200px; height:100px; text-align: left">-->
+
+                <!--<div style="width:90px; float: left; color:#0404B4">E-mail: </div>-->
+                <!--<div [innerHTML]="row['Email']" style="float: left;"></div>-->
+                <!--<p>-->
+
+                <!--<div style="width:90px; clear: both; float: left; color:#0404B4">Enroll.date:</div>-->
+                <!--<div style="float: left;">{{row['EnrDate'] | date: 'dd MMM yyyy' }}</div>-->
+                <!--<p>-->
+
+                <!--<div style="width:90px; clear: both;  float: left; color:#0404B4">Age:</div>-->
+                <!--<div [innerHTML]="row['Age']" style="float: left;"></div>-->
+                <!--<p>-->
+
+                <!--</div>-->
+
+                <!--</ng-template>-->
+                <!--</ngx-datatable-column>-->
+
+                <!--<ngx-datatable-column name="Action"-->
+                <!--[width]="103"-->
+                <!--[minWidth]="83"-->
+                <!--[maxWidth]="103"-->
+                <!--[frozenRight]="true"-->
+                <!--[resizeable]="false"-->
+                <!--&gt;-->
+
+                <!--<ng-template let-row="row" let-value="value" ngx-datatable-cell-template>-->
+                <!--<div style="width: 78px; height:90px; padding-top:15px; padding-left:16px;  background-color: gainsboro; " >-->
+                <!--<div id='aOpen' class='logitem' (click)="aopen(row['IdStud'])">Open</div>-->
+                <!--<p>-->
+                <!--<div id='aDelete' class='logitem' (click)="adelete(row['IdStud'])">Delete</div>-->
+                <!--</div>-->
+                <!--</ng-template>-->
+                <!--</ngx-datatable-column>-->
+
+              </ngx-datatable>
+
+
+              <!--(toggle)="onDetailToggle($event)"-->
+              <!--(change)="onToggle(row)"-->
+              <!--[rowHeight]="getDetailRowHeight">-->
+            </div>
+          </div>
+
+
+        </div>
+      </div>
+
+    </div>
+
+
+
+
+    <jqxWindow [theme]="'material'" #areyousureWindow
+               [width]="320"
+               [height]="170"
+               [resizable]="false"
+               [draggable]="false"
+               [cancelButton]="'.cancelButton'"
+               [isModal]="true"
+               [autoOpen]="false"
+               [modalOpacity]="0.3"
+               [animationType]="'slide'"
+               [title]= "'Message'"
+               style="position: fixed; left: 50%; top: 50%;">
+      <div class="messageHeaderStyles">
+        Messagw
+      </div>
+      <div class="messageContentStyles">
+        <!--Dobar dan-->
+        <!--<label [(ngModel)]="tmessage">-->
+        {{ tmessage }}
+        <div class="messageFooterStyles">
+          <div style="float:left; width: 50%; text-align: center">
+            <button class="btn btn-primary tbtnm" (click)="closeYes()" type="submit">Yes</button>
+          </div>
+          <div style="float:left; width: 50%; text-align: center">
+            <button class="btn btn-primary tbtnm" (click)="closeNo()" type="submit">No</button>
+          </div>
+
+        </div>
+        <!--</label>-->
+      </div>
+
+
+    </jqxWindow>
+
+    <!--<div class="twaitdiv" [hidden]="tWaitHdn">-->
+    <!--<img class="tslika" src="assets/images/wait.gif"  alt="Logo">-->
+    <!--</div>-->
+
+
+    <jqxWindow [theme]="'material'" #messageWindow
+               [width]="260"
+               [height]="170"
+               [resizable]="false"
+               [draggable]="false"
+               [cancelButton]="'.cancelButton'"
+               [isModal]="true"
+               [autoOpen]="false"
+               [modalOpacity]="0.3"
+               [animationType]="'slide'"
+               [title]= "'Message'"
+               style="position: fixed; left: 50%; top: 50%;">
+      <div class="messageHeaderStyles">
+        Messagw
+      </div>
+      <div class="messageContentStyles">
+        <!--Dobar dan-->
+        <!--<label [(ngModel)]="tmessage">-->
+        {{ tmessage }}
+        <div class="messageFooterStyles">
+          <button class="btn btn-primary tbtnm" (click)="closeMessage()" type="submit">OK</button>
+        </div>
+        <!--</label>-->
+      </div>
+
+
+    </jqxWindow>

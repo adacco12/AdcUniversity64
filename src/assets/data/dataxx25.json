@@ -1,0 +1,42 @@
+[
+  {
+   "IdStud":"1","Code":"122","FirstName":"Mirko","LastName":"Miocic","EnrDate":null,"Address":"Ilica2","Age":34
+  },
+  {"IdStud":"2","Code":"204","FirstName":"Jovana","LastName":"Radovanovic","EnrDate":"2018-04-09T00:00:00.000Z","Address":"Ilica 87","Age":0
+  },
+  {"IdStud":"3","Code":"31","FirstName":"Milorad","LastName":"Hrgan","EnrDate":"2018-10-31T00:00:00.000Z","Address":"Ilica 32","Age":0},
+  {"IdStud":"4","Code":"46","FirstName":"Diane","LastName":"Komadina","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"15","Code":"15","FirstName":"Fiola","LastName":"Jovanovic","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"17","Code":"17","FirstName":"Mickey","LastName":"Chris","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"18","Code":"181","FirstName":"Krešo","LastName":"Hrgic","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"20","Code":"20","FirstName":"Chriss","LastName":"Randy","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"21","Code":"21","FirstName":"Cecilija","LastName":"Keca","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"23","Code":"23","FirstName":"Cvrcko","LastName":"Holjec","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"24","Code":"122","FirstName":"Mirko","LastName":"Miocic","EnrDate":null,"Address":"Ilica21","Age":34
+  },
+  {"IdStud":"30","Code":"30","FirstName":"Marko","LastName":"Keba Beba","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"33","Code":"33","FirstName":",jgljug","LastName":"hjgj,hb","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"34","Code":"34","FirstName":"Diana","LastName":"m","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"35","Code":"35","FirstName":"jg","LastName":"jhf","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"36","Code":"36","FirstName":"hgdjgh","LastName":"hdjhzgt","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"37","Code":"37","FirstName":"mhgdh","LastName":"gdghf","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"39","Code":"38","FirstName":"nghd","LastName":"hmvj,","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"40","Code":"40","FirstName":"mhv","LastName":"n,hgtdt","EnrDate":null,"Address":"null","Age":0
+  },
+  {"IdStud":"41","Code":"41","FirstName":"trwth3","LastName":"gshrgtsdtx","EnrDate":null,"Address":"null","Age":0
+  }
+]

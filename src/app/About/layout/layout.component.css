@@ -1,0 +1,95 @@
+.profile-home {
+  /*height: 800px;*/
+  padding: 1px;
+  margin: 0 auto;
+  /*border-style: solid;*/
+  /*border-width: medium;*/
+  /*background-color: gainsboro;*/
+  /*margin-top: 10px;*/
+}
+
+.leftside {
+  margin-top: 4px;
+  float:left;
+  width: 200px;
+
+  margin-bottom: 0px;
+  background-color: #f4f4f4;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-color: #d8d8d8;
+  /*margin-top:10px;*/
+  /*margin: 1px;*/
+  padding: 10px;
+
+  /*background-color: yellow;*/
+}
+
+.lcol {
+  width: 100px;
+
+  background-color: yellow;
+}
+
+.col-fixed-240{
+  margin-top: 8px;
+  width:240px;
+  background:greenyellow;
+  position:fixed;
+
+  z-index:1;
+}
+
+/*.col-fixed-160{*/
+/*margin-left:240px;*/
+/*width:360px;*/
+/*background:blue;*/
+/*position:fixed;*/
+/*height:100%;*/
+/*z-index:1;*/
+/*}*/
+
+.col-offset-400{
+  padding-left:245px;
+  z-index:0;
+  height:500px;
+}
+
+.tdiv {
+  height: 100%;
+  margin-bottom: 0px;
+  background-color: #f4f4f4;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-color: #d8d8d8;
+  padding: 10px;
+}
+
+
+.leftcolomn {
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+
+  /*width: 100px;*/
+
+  /*background-color: yellow;*/
+}
+
+.rightcolomn {
+  margin-left: -7.5px;
+  margin-right: -7.5px;
+
+
+  /*width: 100px;*/
+
+  /*background-color: pink;*/
+}
+
+.trow{
+  height: 100%;
+  /*margin-right: 20px;*/
+}

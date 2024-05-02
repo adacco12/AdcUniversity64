@@ -10,7 +10,6 @@ import { GlavnaComponent } from './glavna/glavna.component';
 import { Liststudents2Component } from './liststudents2/liststudents2.component';
 import { TstudentComponent } from './tstudent/tstudent.component';
 import { NgforComponent } from './ngfor/ngfor.component';
-import { GstGetComponent } from './gst-get/gst-get.component';
 import { NotloggedComponent } from './notlogged/notlogged.component';
 import { PagingComponent } from './paging/paging.component';
 import { NgxscrollingComponent } from './ngxscrolling/ngxscrolling.component';
@@ -26,6 +25,8 @@ import { FedererComponent } from './About/federer/federer.component';
 import { LayoutComponent } from './About/layout/layout.component';
 import { LeftSideComponent } from './About/left-side/left-side.component';
 import { SajtsearchComponent } from './sajtsearch/sajtsearch.component';
+
+import { Tstudent2Component } from './tstudent2/tstudent2.component';
 
 
 const routes: Routes = [
@@ -43,8 +44,8 @@ const routes: Routes = [
       { path: 'liststudents2', component: Liststudents2Component },
       { path: 'paging', component: PagingComponent },
       { path: 'tstudent', component: TstudentComponent },
+      { path: 'tstudent2', component: Tstudent2Component },
       { path: 'ngfor', component: NgforComponent },
-      { path: 'gst-get', component: GstGetComponent },
       { path: 'ngxscrolling', component: NgxscrollingComponent },
       { path: 'ngxvirtpage', component: NgxvirtpageComponent },
       { path: 'ngxvirtpage3', component: Ngxvirtpage3Component },
@@ -55,6 +56,9 @@ const routes: Routes = [
           { path: 'ariana', component: ArianaComponent },
           { path: 'federer', component: FedererComponent },
           { path: 'nadal', component: NadalComponent }
+          // { path: 'nadal',
+          //   loadChildren: './About/madal/nadal.module#NadalModule',
+          // }
 
         ]
       },

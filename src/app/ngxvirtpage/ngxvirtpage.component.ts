@@ -336,7 +336,7 @@ export class NgxvirtpageComponent implements OnInit {
 
 
   public brisiRed(): any {
-    if (this.globv.tIMEMDB === 'AdcUniversity') {
+    if (this.globv.tIMEMDB === 'AdcUniversity100') {
       this.tmessage = 'This is a demo database.';
       this.messageWindow.position('center');
       this.messageWindow.open();
@@ -444,7 +444,7 @@ export class NgxvirtpageComponent implements OnInit {
 
 
   novi() {
-    if (this.globv.tIMEMDB === 'AdcUniversity') {
+    if (this.globv.tIMEMDB === 'AdcUniversity100') {
       this.tmessage = 'This is a demo database.';
       this.messageWindow.position('center');
       this.messageWindow.open();

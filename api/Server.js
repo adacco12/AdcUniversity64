@@ -9,6 +9,7 @@ const express = require('express'),
   ;
 
 const studentRoute = require('./routes/students.route');
+const userRoute = require('./routes/users.route');
 mongoose.Promise = global.Promise;
 
 //const mngDB = 'mongodb://localhost:27017/university01';
@@ -23,6 +24,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(cors());
 app.use('/studenti', studentRoute);
+app.use('/useri', userRoute);
 const port = process.env.PORT || 4001;
 
 app.use(bodyParser());

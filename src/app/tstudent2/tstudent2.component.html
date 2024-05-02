@@ -1,0 +1,66 @@
+
+<div class="profile-home">
+
+  <div class="container">
+    <div class="row trow">
+      <div class="col-sm-12 tcol" *ngIf="edited">
+
+        <div class="container">
+          <div class="row trow2">
+            <div class="col-sm-6 tcol2 mt-2" *ngIf="edited" >
+              <div class="form-group glabelgroup">
+                <label [hidden]="!edited" class="oplabel">ID number: </label>
+                <span class="glabel">{{sstudent_id}}</span>
+              </div>
+
+              <div class="form-group">
+                <label for="codeeInput">Code</label>
+                <input #scode type="text" [(ngModel)]="sstudentCode" class="form-control" id="codeeInput" aria-describedby="codeHelp" maxlength="20">
+              </div>
+
+
+              <div style="clear: both;"></div>
+
+              <div class="form-group">
+                <label for="firstnameInput">First name</label>
+                <input #fname type="text" [(ngModel)]="sstudentFirstname" class="form-control" id="firstnameInput" placeholder="FirstName" maxlength="30">
+              </div>
+
+              <div class="form-group">
+                <label for="lastnameInput">Last name</label>
+                <input #lname type="text" [(ngModel)]="sstudentLastname" class="form-control" id="lastnameInput" placeholder="LastName" maxlength="40">
+              </div>
+
+
+
+              <div class="container">
+              </div>
+            </div>
+
+            <div class="col-sm-6 tcol2 mt-2" *ngIf="edited" style="">
+
+
+              <div class="container">
+                <div class="row trow3">
+                  <div class="col-sm-6 tcol3 mt-2" style="">
+                    <button type="button" type="submit" (click)="potvrdi()" class="btn btn-success btn3">OK</button>
+                  </div>
+                  <div class="col-sm-6 tcol3 mt-2" style="">
+                    <button type="button" type="submit" (click)="cancel()" class="btn btn3">Cancel</button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div> </div>
+
+    </div>
+
+  </div>
+
+
+
+</div>

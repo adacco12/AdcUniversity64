@@ -18,5 +18,10 @@ export class Dekl {
   tekst4 = '';
 
   ulogovan = false;
+
+  StudentPONISTI: boolean = true;
+  StudentNOVI: boolean= false;
+
+
 }
 

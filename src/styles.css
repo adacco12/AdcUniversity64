@@ -6,3 +6,8 @@
 @import '~@swimlane/ngx-datatable/release/themes/dark.css';
 @import '~@swimlane/ngx-datatable/release/assets/icons.css';
 @import '~@swimlane/ngx-datatable/release/index.css';
+
+@import '../styles/bootstrap-4.1.0-dist/css/bootstrap.min.css';
+
+@import '~jqwidgets-scripts/jqwidgets/styles/jqx.base.css';
+@import '~jqwidgets-scripts/jqwidgets/styles/jqx.material.css';

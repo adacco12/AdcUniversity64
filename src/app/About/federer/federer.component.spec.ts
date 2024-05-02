@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { GstGetComponent } from './gst-get.component';
+import { FedererComponent } from './federer.component';
 
-describe('GstGetComponent', () => {
-  let component: GstGetComponent;
-  let fixture: ComponentFixture<GstGetComponent>;
+describe('FedererComponent', () => {
+  let component: FedererComponent;
+  let fixture: ComponentFixture<FedererComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GstGetComponent ]
+      declarations: [ FedererComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(GstGetComponent);
+    fixture = TestBed.createComponent(FedererComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -2,7 +2,6 @@
 // `ng build ---prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-
 export const environment = {
   production: false,
   globalVar1: 200,
@@ -32,9 +31,12 @@ export const environment = {
   gtendind: '16',
   toffset: 0,
   tsearchstring: '',
-  // THOST: 'localhost',
-  THOST: 'www.adacco.com'
+  THOST: 'localhost',
 };
+
+// THOST: 'localhost',
+// THOST: 'www.adacco.com'
+
 
 /*
  * In development mode, to ignore zone related error stack frames such as

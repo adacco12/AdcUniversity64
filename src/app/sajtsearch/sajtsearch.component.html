@@ -1,0 +1,40 @@
+<p>  </p>
+
+<div class="container">
+  <div class="row">
+
+    <table style="width:100%">
+      <thead>
+      <tr>
+
+        <th (click)="sort('name')" >Name</th>
+        <th (click)="sort('content')">Content</th>
+        <th (click)="sort('link')">Link</th>
+
+        <span class="glyphicon sort-icon" *ngIf="key =='name'" [ngClass]="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+
+      </tr>
+      </thead>
+
+      <tbody>
+
+      <tr *ngFor="let sajt of tmojsajt | orderBy: key : reverse | filter:filter | paginate: { itemsPerPage: 5, currentPage: p }; let i = index">
+        <td valign="top" width="20%" style="height:50px">{{sajt.name}}</td>
+        <td width="60%">{{sajt.content| slice:0:200}}</td>
+        <td valign="top" width="20%"><a  [routerLink]="['/' + sajt.link]">{{sajt.link}}</a></td>
+
+      </tr>
+      </tbody>
+
+    </table>
+
+
+    <div style="width:100%; float:right;  text-align: right">
+      <pagination-controls  (pageChange)="p = $event" ></pagination-controls>
+    </div>
+
+  </div>
+</div>
+
+<!--<button class="bouton-image monBouton_first tbtn2" (click)="klik()">Klik</button>-->
+

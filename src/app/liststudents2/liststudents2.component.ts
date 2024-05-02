@@ -1,8 +1,10 @@
-import {Component, OnInit, ViewChild, Output, EventEmitter, AfterViewInit, Inject} from '@angular/core';
+import {Component, OnInit, ViewChild, Output, EventEmitter, AfterViewInit, Inject } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as $ from 'jquery';
 import { jqxGridComponent } from 'jqwidgets-scripts/jqwidgets-ts/angular_jqxgrid';
+
+// import { DOCUMENT } from '@angular/common'
 
 import { Student } from '../student.service';
 import { DbService } from '../db.service';
@@ -25,7 +27,7 @@ import { DbmongoService } from '../dbmongo.service';
   styleUrls: ['./liststudents2.component.css']
 })
 
-export class Liststudents2Component implements AfterViewInit  {
+export class Liststudents2Component implements AfterViewInit {
   public checkStatus: boolean;
 
   globv = environment;
@@ -42,6 +44,8 @@ export class Liststudents2Component implements AfterViewInit  {
 
   @ViewChild('areyousureWindow') areyousureWindow: jqxWindowComponent;
   @ViewChild('messageWindow') messageWindow: jqxWindowComponent;
+  @ViewChild('studentWindow') studentWindow: jqxWindowComponent;
+
 
   data: any[];
 
@@ -53,6 +57,7 @@ export class Liststudents2Component implements AfterViewInit  {
 
       datafields:
         [
+          {name: '_id', type: 'string', map: '0'},
           {name: 'IdStud', type: 'string', map: '0'},
           {name: 'Code', type: 'string', map: '1'},
           {name: 'FirstName', type: 'string', map: '2'},
@@ -68,7 +73,7 @@ export class Liststudents2Component implements AfterViewInit  {
     width: '99%',
     //height: 285,
     //height: '90%',
-    height:'calc(100% - 60px)',
+    height: 'calc(100% - 60px)',
     // height: 1op80,
     source: this.dataAdapter,
     //pageable: true,
@@ -101,14 +106,17 @@ export class Liststudents2Component implements AfterViewInit  {
     public tstdnt: Student,
     private dbmongoService: DbmongoService,
     private http: HttpClient
-  ) { }
+  ) {
+  }
 
   @ViewChild('myGrid') myGrid: jqxGridComponent;
 
   ngOnInit() {
-    // if ( this.dekl.ulogovan === false) {
+    //alert('ulogovan je ' + this.dekl.ulogovan);
 
-    if (this.storage.get('member_name') ===  null) {
+    if (this.dekl.ulogovan === false) {
+
+      // if (this.storage.get('member_name') ===  null) {
       this.router.navigate(['notlogged']);
       return;
     }
@@ -129,6 +137,7 @@ export class Liststudents2Component implements AfterViewInit  {
         // alert ('brisi redak');
         // this.brisiRed();
         const noviiidstud = Number(this.globv.noviidstud) + 1;
+
         // const noviiidstud2 = noviiidstud.toString();
         // this.dbService.brisiStudenta(noviiidstud)
         this.dbmongoService.brisiStudenta(this.globv.tIMEMDB, noviiidstud)
@@ -145,7 +154,7 @@ export class Liststudents2Component implements AfterViewInit  {
             } else {
               this.globv.trowind = Number(this.globv.trowind) - 1;
               this.globv.tselind = Number(this.globv.tselind) - 1;
-              this.myGrid.selectrow(this.globv.trowind );
+              this.myGrid.selectrow(this.globv.trowind);
               this.myGrid.ensurerowvisible(this.globv.trowind);
 
               // alert('broj:' + this.tdummy.broj1 + '    dodano:' + this.tdummy.tekst1);
@@ -154,9 +163,15 @@ export class Liststudents2Component implements AfterViewInit  {
         this.globv.NOVI = false;
       }
     }
+
+    if (this.dekl.StudentPONISTI === false) {
+      // alert('StudentPONISTI = false');
+
+      this.upgrade2();
+    }
   }
 
-  ngAfterViewInit(): void  {
+  ngAfterViewInit(): void {
     this.myGrid.createWidget(this.settings);
 
     // this.myGrid.selectrow(0);
@@ -206,7 +221,7 @@ export class Liststudents2Component implements AfterViewInit  {
       });
   }
 
-  Bindingcomplete(event: any): void   {
+  Bindingcomplete(event: any): void {
     // Do Something
     // alert('Bindingcomplete');
     // this.myGrid.selectrow(0);
@@ -242,9 +257,10 @@ export class Liststudents2Component implements AfterViewInit  {
       .subscribe(data => {
         this.tdata = data;
 
+        this.tstdnt.id = this.tdata[0]._id;
         this.tstdnt.IdStud = this.tdata[0].IdStud;
         // this.tstdnt.Code = this.tdata[0].Code;
-        if (this.tdata[0].Code  === null || this.tdata[0].Code  === undefined || this.tdata[0].Code  === 'undefined') {
+        if (this.tdata[0].Code === null || this.tdata[0].Code === undefined || this.tdata[0].Code === 'undefined') {
           this.tstdnt.Code = '';
         } else {
           this.tstdnt.Code = this.tdata[0].Code;
@@ -253,25 +269,25 @@ export class Liststudents2Component implements AfterViewInit  {
         this.tstdnt.LastName = this.tdata[0].LastName;
 
         // this.tstdnt.EnrDate = this.tdata[0].EnrDate;
-        if (this.tdata[0].EnrDate  === null || this.tdata[0].EnrDate  === undefined || this.tdata[0].EnrDate  === 'undefined') {
+        if (this.tdata[0].EnrDate === null || this.tdata[0].EnrDate === undefined || this.tdata[0].EnrDate === 'undefined') {
           this.tstdnt.EnrDate = '';
         } else {
           this.tstdnt.EnrDate = this.tdata[0].EnrDate;
         }
 
         // this.tstdnt.Email = this.tdata[0].Email;
-        if (this.tdata[0].Email  === null || this.tdata[0].Email  === undefined || this.tdata[0].Email  === 'undefined') {
+        if (this.tdata[0].Email === null || this.tdata[0].Email === undefined || this.tdata[0].Email === 'undefined') {
           this.tstdnt.Email = '';
         } else {
           this.tstdnt.Email = this.tdata[0].Email;
         }
 
-        if (this.tdata[0].Address  === null || this.tdata[0].Address  === undefined || this.tdata[0].Address  === 'undefined') {
+        if (this.tdata[0].Address === null || this.tdata[0].Address === undefined || this.tdata[0].Address === 'undefined') {
           this.tstdnt.Address = '';
         } else {
           this.tstdnt.Address = this.tdata[0].Address;
         }
-        if (this.tdata[0].Age  === null || this.tdata[0].Age  === undefined || this.tdata[0].Age  === 'undefined') {
+        if (this.tdata[0].Age === null || this.tdata[0].Age === undefined || this.tdata[0].Age === 'undefined') {
           this.tstdnt.Age = '0';
         } else {
           this.tstdnt.Age = this.tdata[0].Age;
@@ -284,7 +300,7 @@ export class Liststudents2Component implements AfterViewInit  {
   }
 
   novi() {
-    if (this.globv.tIMEMDB === 'AdcUniversity') {
+    if (this.globv.tIMEMDB === 'AdcUniversity100') {
       this.tmessage = 'This is a demo database.';
       this.messageWindow.position('center');
       this.messageWindow.open();
@@ -329,6 +345,52 @@ export class Liststudents2Component implements AfterViewInit  {
           // alert('update ok');
         }
       });
+  }
+
+  upgrade2st(): any {
+    // alert('upgrade2');
+
+    this.dbmongoService.updejtajStudenta2( this.globv.tIMEMDB)
+      .subscribe(data => {
+
+        this.refreshgrid();
+
+        this.tdata = data;
+        this.tdummy.tekst1 = this.tdata[0].tekst1;
+
+        const a = this.tdummy.tekst1;
+        // b = this.tdummy.tekst2;
+        if (a === 'greska') {
+          alert('error with database');
+        }
+        if (a === 'ok') {
+          // alert('update ok');
+        }
+      });
+
+  }
+
+  upgrade2(): any {
+    // alert('upgrade2');
+
+    this.dbmongoService.updejtajRedak(this.selectedStudent, this.globv.tIMEMDB, 'yy', this.selectedStudent.id)
+      .subscribe(data => {
+
+        this.refreshgrid();
+
+        this.tdata = data;
+        this.tdummy.tekst1 = this.tdata[0].tekst1;
+
+        const a = this.tdummy.tekst1;
+        // b = this.tdummy.tekst2;
+        if (a === 'greska') {
+          alert('error with database');
+        }
+        if (a === 'ok') {
+          // alert('update ok');
+        }
+      });
+
   }
 
 
@@ -410,8 +472,8 @@ export class Liststudents2Component implements AfterViewInit  {
 
     const noviStud = this.globv.noviidstud + 1;
 
-    if ( this.tdummy.tekst1 === 'Error') {
-      alert ('Error :' + this.tdummy.tekst2);
+    if (this.tdummy.tekst1 === 'Error') {
+      alert('Error :' + this.tdummy.tekst2);
       return;
     } else {
 
@@ -448,7 +510,7 @@ export class Liststudents2Component implements AfterViewInit  {
   }
 
   public brisiRed(): any {
-    if (this.globv.tIMEMDB === 'AdcUniversity') {
+    if (this.globv.tIMEMDB === 'AdcUniversity100') {
       this.tmessage = 'This is a demo database.';
       this.messageWindow.position('center');
       this.messageWindow.open();
@@ -508,11 +570,17 @@ export class Liststudents2Component implements AfterViewInit  {
 
     let tekIdStudStr = '';
     const ttid = this.globv.tidstud.toString();
-    if (ttid.length === 1) {tekIdStudStr = '00' + ttid ; }
-    if (ttid.length === 2) {tekIdStudStr = '0' + ttid; }
-    if (ttid.length === 3) {tekIdStudStr = ttid; }
+    if (ttid.length === 1) {
+      tekIdStudStr = '00' + ttid;
+    }
+    if (ttid.length === 2) {
+      tekIdStudStr = '0' + ttid;
+    }
+    if (ttid.length === 3) {
+      tekIdStudStr = ttid;
+    }
 
-    const tfilepic = 'Photo' + tekIdStudStr  + '.jpg';
+    const tfilepic = 'Photo' + tekIdStudStr + '.jpg';
     this.dbService.brisisliku(this.globv.tSlikeDir, tfilepic);
   }
 
@@ -528,7 +596,7 @@ export class Liststudents2Component implements AfterViewInit  {
 
   doIfChecked(): void {
 
-    if (!this.checkStatus ) {
+    if (!this.checkStatus) {
       //alert("checked");
       // $scope.jqxgridExamsSettings.apply('filterable', 'true');
       // $scope.jqxgridExamsSettings.apply('showfilterrow', 'true');
@@ -554,10 +622,70 @@ export class Liststudents2Component implements AfterViewInit  {
     this.messageWindow.close();
 
   }
-  Rowselect  (tevent): void {
+
+  Rowselect(tevent): void {
 
   }
 
+  otvoridialog() {
+    alert('otvori dialog');
+
+    this.studentWindow.position('center');
+    this.studentWindow.open();
+  }
+
+  closeDialog(): void {
+    this.studentWindow.close();
+  }
+
+  parentFun() {
+    alert('parent component function. jeeeee');
+
+  }
+
+
+  otvori2() {
+    this.globv.NOVI = false;
+    let trind = this.myGrid.getselectedrowindex();
+
+    let dataRecord = this.myGrid.getrowdata(trind);
+    const tidbroj = dataRecord.IdStud;
+    this.globv.tidstud = dataRecord.IdStud;
+
+    this.dajStudenta2(trind, tidbroj);
+
+    // this.router.navigate(['/tstudent2']);
+  }
+
+  public dajStudenta2(rowindex, tidbroj): any {
+
+    if (rowindex === -1) {
+      return;
+    }
+
+    // this.globv.NOVI = true;
+
+    this.globv.tselind = rowindex;
+
+    this.dbmongoService.uzmiStudenta(tidbroj, this.globv.tIMEMDB)
+      .subscribe(data => {
+        this.tdata = data;
+
+        this.tstdnt.IdStud = this.tdata[0].IdStud;
+        this.tstdnt.id = this.tdata[0]._id;
+        // this.tstdnt.Code = this.tdata[0].Code;
+        if (this.tdata[0].Code === null || this.tdata[0].Code === undefined || this.tdata[0].Code === 'undefined') {
+          this.tstdnt.Code = '';
+        } else {
+          this.tstdnt.Code = this.tdata[0].Code;
+        }
+        this.tstdnt.FirstName = this.tdata[0].FirstName;
+        this.tstdnt.LastName = this.tdata[0].LastName;
+
+
+        this.router.navigate(['/tstudent2']);
+      });
+  }
 }
 
 

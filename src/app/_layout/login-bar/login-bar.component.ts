@@ -12,6 +12,9 @@ import { LOCAL_STORAGE, StorageService } from 'angular-webstorage-service';
 
 import {DbService} from '../../db.service';
 import * as $ from 'jquery';
+import {DbmongoService} from '../../dbmongo.service';
+
+import { User } from '../../user.service';
 
 
 @Component({
@@ -50,7 +53,7 @@ export class LoginBarComponent {
 
   public sstudent: string;
   // private tstdnt: Student;
-  private tstdnt = new Student;
+  private tstdnt = new Student();
 
   private tuserid = '';
   private tpassword = '';
@@ -78,8 +81,11 @@ export class LoginBarComponent {
   //
   // }
 
+  // https://medium.com/@tiagovalverde/how-to-save-your-app-state-in-localstorage-with-angular-ce3f49362e31
+
   constructor(@Inject(LOCAL_STORAGE) private storage: StorageService,
               private dbService: DbService,
+              private dbmongoService: DbmongoService,
               public dekl: Dekl,
               private router: Router
   ) {}
@@ -109,7 +115,6 @@ export class LoginBarComponent {
     this.tLogTipHdn2 = true;
     this.tLogTipHdn4 = true;
 
-    this.loginWindow.title('Login');
     this.loginWindow.position('center');
     this.loginWindow.open();
   }
@@ -356,7 +361,7 @@ export class LoginBarComponent {
 
 
   init_member(): void {
-    // alert('init');
+    //alert('init');
 
     if (this.storage.get('member_name') != null) {
       this.tmember = this.storage.get('member_name');
@@ -364,10 +369,12 @@ export class LoginBarComponent {
       this.tLoggedHdn = false;
 
       this.dekl.ulogovan = true;
+      //alert('ulogovan = true');
 
     }
     if (this.storage.get('ime_mdb') != null) {
       this.globv.tIMEMDB = this.storage.get('ime_mdb');
+
     }
     if (this.storage.get('tSlikeDir') != null) {
       this.globv.tSlikeDir = this.storage.get('tSlikeDir');
@@ -407,9 +414,9 @@ export class LoginBarComponent {
 
     // alert('dajPassword' + fLoggin);
 
-    this.dbService.GetUserPassword('AdcUniversity', fLoggin)
+    this.dbmongoService.GetUser('AdcUniversity', fLoggin)
       .subscribe(data => {
-        let datagStudentiGrid = [];
+        let dataUseriGrid = [];
 
         this.tdata = data;
 

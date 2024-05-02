@@ -1,0 +1,154 @@
+.profile-home {
+  /*height: 800px;*/
+  padding: 1px;
+  margin: 0 auto;
+  /*border-style: solid;*/
+  /*border-width: medium;*/
+  /*background-color: gainsboro;*/
+  /*margin-top: 10px;*/
+}
+
+.tcol {
+  margin-bottom: 0px;
+  background-color: #f4f4f4;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-color: #d8d8d8;
+  /*margin-top:10px;*/
+  height: 300px;
+  padding: 3px;
+}
+
+.tdiv {
+  height: 100%;
+  margin-bottom: 0px;
+  background-color: #f4f4f4;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-color: #d8d8d8;
+  /*margin-top:10px;*/
+  /*margin: 1px;*/
+  padding: 10px;
+}
+
+.dugmaddv{
+  padding-top: 0px;
+  font-size: medium;
+  height:50px;
+  /*background-color:orange;*/
+}
+
+
+.messageHeaderStyles {
+  height:20px;
+  font-size: medium;
+  font-weight:bold;
+  padding-top: 10px;
+}
+
+.messageContentStyles{
+  padding-top: 10px;
+  font-size: medium;
+  height:50px;
+  /*margin-left: 20px;*/
+  /*background-color:orange;*/
+}
+
+.messageFooterStyles {
+  margin-top: 30px;
+  /*background-color:orange;*/
+  text-align: center;
+
+}
+
+.tbtnm{
+  width: 120px;
+  /*margin-right: 20px;*/
+}
+
+.trow{
+  height: 700px;
+  /*margin-right: 20px;*/
+}
+
+.tgdiv{
+  height: 680px;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+/* Might want to wrap a span around your checkbox text */
+.checkboxtext
+{
+  /* Checkbox text */
+  font-size: 110%;
+  display: inline;
+}
+
+
+.firstbtn {
+  width: 40px;
+  height: 40px;
+  /*background: url(../../assets/images/previous33.png) no-repeat;*/
+  cursor:pointer;
+  /*border: none;*/
+  border-width: thin;
+}
+
+.bouton-image:before {
+  content: "";
+  width: 16px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 5px;
+  vertical-align: text-top;
+  background-color: transparent;
+  background-position : center center;
+  background-repeat:no-repeat;
+}
+
+.monBouton_first:before{
+  background-image : url(../../assets/images/first0.png);
+}
+.monBouton_prev:before{
+  background-image : url(../../assets/images/previous0.png);
+}
+.monBouton_next:before{
+  background-image : url(../../assets/images/next0.png);
+}
+.monBouton_last:before{
+  background-image : url(../../assets/images/last0.png);
+}
+
+
+.tbtn2{
+  padding-top: 5px;
+  background-color: lightgray;
+  width: 40px;
+  height: 35px;
+  border-radius: 5px;
+  border: 1px solid darkgrey;
+  cursor:pointer;
+}
+
+.tapagingnatpis {
+  margin-left: 15px
+}
+l
+.trow2{
+  /*margin-top: 20px;*/
+  margin-bottom: 20px;
+}
+

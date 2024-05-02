@@ -5,6 +5,9 @@ const Schema = mongoose.Schema;
 
 // Define collection and schema for Business
 let studentSchema = new Schema({
+    _id: {
+      type: String
+    },
     IdStud: {
       type: Number
     },
@@ -36,7 +39,7 @@ let studentSchema = new Schema({
       type: String
     }
 },{
-  collection: 'students'
+  collection: 'Students'
   });
 
 

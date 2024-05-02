@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Message.ComponentService } from './message.component.service';
+import { MessageComponentService } from './message.component.service';
 
 describe('Message.ComponentService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: Message.ComponentService = TestBed.get(Message.ComponentService);
+    const service: MessageComponentService = TestBed.get(MessageComponentService);
     expect(service).toBeTruthy();
   });
 });

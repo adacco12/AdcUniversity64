@@ -1,0 +1,167 @@
+<div class="profile-home">
+
+  <div class="container">
+
+    <!-- Example row of columns -->
+    <div class="row trow">
+
+      <div class="col-sm-12 pr-sm-1 pl-sm-0 mt-2">
+
+        <!--<div class="tdiv tgdiv" style = "background-color: yellow">-->
+        <div class="tdiv tgdiv">
+
+          <div class="dugmaddv">
+            <div style="width: 100%">
+              <div  style="float: left; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="otvori()" >Open</button>
+              </div>
+              <div  style="float: left; margin-left:20px; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="novi()">New</button>
+              </div>
+              <div  style="float: left; margin-left:20px; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="brisiRed()">Delete</button>
+              </div>
+
+
+            </div>
+          </div>
+
+          <ngx-datatable
+            #myTable
+            class="bootstrap ngx-datatable01"
+            [rows]="rows"
+            [columns]="columns"
+            [columnMode]="'force'"
+            [headerHeight]="50"
+            [footerHeight]="'auto'"
+            [rowHeight]="50"
+            [externalPaging]="true"
+            [count]="page.totalElements"
+            [offset]="page.pageNumber"
+            (page)='setPage($event)'
+            [selected]="selected"
+            [selectionType]="'single'"
+            (select)="onSelect($event)"
+            (dblclick)="otvori()"
+          >
+
+            <!--<ngx-datatable-footer>-->
+
+            <!--<ng-template-->
+            <!--ngx-datatable-footer-template-->
+            <!--let-rowCount="rowCount"-->
+            <!--let-pageSize="pageSize"-->
+            <!--let-selectedCount="selectedCount"-->
+            <!--let-curPage="curPage"-->
+            <!--let-offset="offset">-->
+            <!--<div style="padding: 5px 10px">-->
+            <!--&lt;!&ndash;<div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<strong>Summary</strong>: Gender: Female&ndash;&gt;-->
+            <!--&lt;!&ndash;</div>&ndash;&gt;-->
+            <!--&lt;!&ndash;<hr style="width:100%" />&ndash;&gt;-->
+            <!--<div>-->
+            <!--Rows: {{rowCount}} |-->
+            <!--Size: {{pageSize}} |-->
+            <!--Current: {{curPage}} |-->
+            <!--Offset: {{offset}}-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</ng-template>-->
+
+            <!--<datatable-pager-->
+            <!--[pagerLeftArrowIcon]="'datatable-icon-left'"-->
+            <!--[pagerRightArrowIcon]="'datatable-icon-right'"-->
+            <!--[pagerPreviousIcon]="'datatable-icon-prev'"-->
+            <!--[pagerNextIcon]="'datatable-icon-skip'"-->
+            <!--[page]="curPage"-->
+            <!--[size]="pageSize"-->
+            <!--[count]="rowCount"-->
+            <!--[hidden]="!((rowCount / pageSize) > 1)"-->
+            <!--(change)="myTable.onFooterPage($event)">-->
+            <!--</datatable-pager>-->
+
+            <!--</ngx-datatable-footer>-->
+          </ngx-datatable>
+
+          <!--(toggle)="onDetailToggle($event)"-->
+          <!--(change)="onToggle(row)"-->
+          <!--[rowHeight]="getDetailRowHeight">-->
+        </div>
+      </div>
+
+
+    </div>
+  </div>
+
+</div>
+
+
+
+
+<jqxWindow [theme]="'material'" #areyousureWindow
+           [width]="320"
+           [height]="170"
+           [resizable]="false"
+           [draggable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    <!--Dobar dan-->
+    <!--<label [(ngModel)]="tmessage">-->
+    {{ tmessage }}
+    <div class="messageFooterStyles">
+      <div style="float:left; width: 50%; text-align: center">
+        <button class="btn btn-primary tbtnm" (click)="closeYes()" type="submit">Yes</button>
+      </div>
+      <div style="float:left; width: 50%; text-align: center">
+        <button class="btn btn-primary tbtnm" (click)="closeNo()" type="submit">No</button>
+      </div>
+
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>
+
+<!--<div class="twaitdiv" [hidden]="tWaitHdn">-->
+<!--<img class="tslika" src="assets/images/wait.gif"  alt="Logo">-->
+<!--</div>-->
+
+
+<jqxWindow [theme]="'material'" #messageWindow
+           [width]="260"
+           [height]="170"
+           [resizable]="false"
+           [draggable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    <!--Dobar dan-->
+    <!--<label [(ngModel)]="tmessage">-->
+    {{ tmessage }}
+    <div class="messageFooterStyles">
+      <button class="btn btn-primary tbtnm" (click)="closeMessage()" type="submit">OK</button>
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>
+

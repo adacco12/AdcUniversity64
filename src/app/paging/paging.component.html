@@ -1,0 +1,154 @@
+<div class="profile-home">
+
+  <div class="container">
+
+    <!-- Example row of columns -->
+    <div class="row trow">
+
+      <div class="col-sm-12 pr-sm-1 pl-sm-0 mt-2">
+
+        <div class="tdiv tgdiv" id="tdiv">
+
+          <div class="dugmaddv">
+            <div style="width: 100%">
+              <div  style="float: left; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="otvori()">Open</button>
+              </div>
+              <div  style="float: left; margin-left:20px; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="novi()">New</button>
+              </div>
+              <div  style="float: left; margin-left:20px; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" id="btnDelete" (click)="brisiRed()">Delete</button>
+              </div>
+
+              <!--<div  style="float: left; margin-left:20px; text-align:left;">-->
+              <!--<button class="btn btn-primary tbtn" type="submit" (click)="Refresh()">Refresh</button>-->
+              <!--</div>-->
+            </div>
+          </div>
+
+
+          <jqxGrid #myGrid
+                   [auto-create]='false'
+                   (onRowselect)="Rowselect($event)"
+                   (onBindingcomplete)="Bindingcomplete($event)"
+                   (dblclick)="otvori()"
+          >
+          </jqxGrid>
+
+          <!--[source]="dataAdapter"-->
+          <!--[pageable]="true"-->
+          <!--[autoheight]="true"-->
+          <!--[width]="getWidth()"-->
+          <!--[ready]="ready"-->
+
+          <div id="topPaging" style="width:97.5%; height:50px; background-color: transparent; padding-left:10px; padding-top:0px; margin-top: 15px;">
+            <div style ="text-align: right;">
+              <button class="bouton-image monBouton_first tbtn2" (click)="first()"></button>
+              <button class="bouton-image monBouton_prev tbtn2" (click)="prev()"  style="margin-left: 10px"></button>
+
+              <span class="tapagingnatpis">{{tpagingdata}}</span>
+
+              <button class="bouton-image monBouton_next tbtn2" (click)="next()" style="margin-left: 15px"></button>
+              <button class="bouton-image monBouton_last tbtn2" (click)="last()" style="margin-left: 10px"></button>
+            </div>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+
+    <!--/////////-->
+    <div class="row trow2">
+
+      <div class="col-sm-12 pr-sm-1 pl-sm-0 mt-2">
+
+        <div class="tdiv" >
+
+          <p>
+            Server-side pagination grid.
+            <br />
+
+            This is a regular and common way to display data from databases that have a huge number of records.            <br />
+
+            <br />
+
+            For each page request, server only selects and sends to a client a "page" of records.        </div>
+      </div>
+
+    </div>
+
+    <!--//////////-->
+
+  </div>
+</div>
+
+
+
+<jqxWindow [theme]="'material'" #areyousureWindow
+           [width]="320"
+           [height]="170"
+           [resizable]="false"
+           [draggable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    <!--Dobar dan-->
+    <!--<label [(ngModel)]="tmessage">-->
+    {{ tmessage }}
+    <div class="messageFooterStyles">
+
+      <div style="float:left; width: 50%; text-align: center">
+        <button class="btn btn-primary tbtnm" (click)="closeYes()" type="submit">Yes</button>
+      </div>
+      <div style="float:left; width: 50%; text-align: center">
+        <button class="btn btn-primary tbtnm" (click)="closeNo()" type="submit">No</button>
+      </div>
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>
+
+
+<jqxWindow [theme]="'material'" #messageWindow
+           [width]="260"
+           [height]="170"
+           [resizable]="false"
+           [draggable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    <!--Dobar dan-->
+    <!--<label [(ngModel)]="tmessage">-->
+    {{ tmessage }}
+    <div class="messageFooterStyles">
+      <button class="btn btn-primary tbtnm" (click)="closeMessage()" type="submit">OK</button>
+    </div>
+    <!--</label>-->
+  </div>
+
+
+</jqxWindow>
+
+
+

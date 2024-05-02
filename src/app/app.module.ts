@@ -23,6 +23,7 @@ import { MyDatePickerModule } from 'mydatepicker';
 import { StorageServiceModule } from 'angular-webstorage-service';
 
 import { Ng2SearchPipeModule } from 'ng2-search-filter'; //importing the module
+// import { Ng2OrderModule } from 'ng2-order-pipe'; //importing the module
 import { Ng2OrderModule } from 'ng2-order-pipe'; //importing the module
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -40,7 +41,6 @@ import { Liststudents2Component } from './liststudents2/liststudents2.component'
 import { TstudentComponent } from './tstudent/tstudent.component';
 import { UploadComponent } from './upload/upload.component';
 import { NgforComponent } from './ngfor/ngfor.component';
-import { GstGetComponent } from './gst-get/gst-get.component';
 import { NotloggedComponent } from './notlogged/notlogged.component';
 import { PagingComponent } from './paging/paging.component';
 import { NgxscrollingComponent } from './ngxscrolling/ngxscrolling.component';
@@ -54,6 +54,8 @@ import { LayoutComponent } from './About/layout/layout.component';
 import { LeftSideComponent } from './About/left-side/left-side.component';
 import { About0Component } from './about0/about0.component';
 import { SajtsearchComponent } from './sajtsearch/sajtsearch.component';
+import { TestdialComponent } from './testdial/testdial.component';
+import { Tstudent2Component } from './tstudent2/tstudent2.component';
 
 const routes: Routes = [
 
@@ -79,7 +81,6 @@ const routes: Routes = [
     TstudentComponent,
     UploadComponent,
     NgforComponent,
-    GstGetComponent,
     NotloggedComponent,
     PagingComponent,
     NgxscrollingComponent,
@@ -92,7 +93,9 @@ const routes: Routes = [
     LayoutComponent,
     LeftSideComponent,
     About0Component,
-    SajtsearchComponent
+    SajtsearchComponent,
+    TestdialComponent,
+    Tstudent2Component
   ],
   imports: [
     BrowserModule,
@@ -115,3 +118,6 @@ const routes: Routes = [
   bootstrap: [AppComponent]
 })
 export class AppModule { }
+
+// RouterModule.forRoot(routes, { useHash: true })
+// zato da bi se na serveru mogao raditi refresh tj reload 

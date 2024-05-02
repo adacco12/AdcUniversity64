@@ -64,13 +64,15 @@ export class DbService {
   constructor(
     private http: HttpClient) { }
 
-  GetUserPassword(imebaze: string, tlogin: string): Observable<User[]> {
+  GetUserPassword(imebaze: string, tlogin: string): Observable<Dummy[]> {
 
     let turl = `${this.userUrl3}${imebaze}`
     turl = turl  + '/' + tlogin;
-    const a = this.http.get<User[]>(turl);
-    return this.http.get<User[]>(turl);
-
+    // const a = this.http.get<User[]>(turl);
+    // return this.
+    // http.get<User[]>(turl);
+    const a = this.http.get<Dummy[]>(turl);
+    return this.http.get<Dummy[]>(turl);
   }
 
   getStudents (tdatabase: string): Observable<Student[]> {
@@ -104,45 +106,45 @@ export class DbService {
   //   return of(STUDENTS);
   // }
 
-  getStudents4 (tdatabase: string): Observable<Student[]> {
-    let tst: Student[];
-    const tstudents = [
-      { Code: '001', IdStud: 11, FirstName: 'Mr. Nice', LastName: '1', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '002', IdStud: 12, FirstName: 'Mr. Nice2', LastName: '2', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '003', IdStud: 13, FirstName: 'Mr. Nice3', LastName: '3', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '004', IdStud: 14, FirstName: 'Mr. Nice4', LastName: '4', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '005', IdStud: 15, FirstName: 'Mr. Nice6', LastName: '5', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '006', IdStud: 16, FirstName: 'Mr. Nice6', LastName: '6', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '007', IdStud: 17, FirstName: 'Mr. Nice7', LastName: '7', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '008', IdStud: 18, FirstName: 'Mr. Nice8', LastName: '8', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '009', IdStud: 19, FirstName: 'Mr. Nice9', LastName: '9', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '010', IdStud: 20, FirstName: 'Mr. Nice10', LastName: '10', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '001', IdStud: 21, FirstName: 'Mr. Nice11', LastName: '11', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '012', IdStud: 22, FirstName: 'Mr. Nice12', LastName: '12', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '013', IdStud: 23, FirstName: 'Mr. Nice13', LastName: '13', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '014', IdStud: 24, FirstName: 'Mr. Nice14', LastName: '14', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '015', IdStud: 25, FirstName: 'Mr. Nice15', LastName: '15', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '016', IdStud: 26, FirstName: 'Mr. Nice16', LastName: '16', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '017', IdStud: 27, FirstName: 'Mr. Nice17', LastName: '17', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '018', IdStud: 28, FirstName: 'Mr. Nice18', LastName: '18', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '019', IdStud: 29, FirstName: 'Mr. Nice19', LastName: '19', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '020', IdStud: 30, FirstName: 'Mr. Nice20', LastName: '20', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '021', IdStud: 31, FirstName: 'Mr. Nice21', LastName: '21', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '022', IdStud: 32, FirstName: 'Mr. Nice22', LastName: '22', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '023', IdStud: 33, FirstName: 'Mr. Nice23', LastName: '23', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '024', IdStud: 34, FirstName: 'Mr. Nice24', LastName: '24', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '025', IdStud: 35, FirstName: 'Mr. Nice25', LastName: '25', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '026', IdStud: 36, FirstName: 'Mr. Nice26', LastName: '26', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '027', IdStud: 37, FirstName: 'Mr. Nice27', LastName: '27', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '028', IdStud: 38, FirstName: 'Mr. Nice28', LastName: '28', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
-      { Code: '029', IdStud: 39, FirstName: 'Mr. Nice29', LastName: '29', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' }
-    ];
-    tst = tstudents;
-    // return {tstudents};
-    const a = 1;
-    // return of (tstudents);
-    return of (tst);
-  }
+  // getStudents4 (tdatabase: string): Observable<Student[]> {
+  //   let tst: Student[];
+  //   const tstudents = [
+  //     { Code: '001', IdStud: 11, FirstName: 'Mr. Nice', LastName: '1', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '002', IdStud: 12, FirstName: 'Mr. Nice2', LastName: '2', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '003', IdStud: 13, FirstName: 'Mr. Nice3', LastName: '3', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '004', IdStud: 14, FirstName: 'Mr. Nice4', LastName: '4', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '005', IdStud: 15, FirstName: 'Mr. Nice6', LastName: '5', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '006', IdStud: 16, FirstName: 'Mr. Nice6', LastName: '6', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '007', IdStud: 17, FirstName: 'Mr. Nice7', LastName: '7', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '008', IdStud: 18, FirstName: 'Mr. Nice8', LastName: '8', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '009', IdStud: 19, FirstName: 'Mr. Nice9', LastName: '9', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '010', IdStud: 20, FirstName: 'Mr. Nice10', LastName: '10', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '001', IdStud: 21, FirstName: 'Mr. Nice11', LastName: '11', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '012', IdStud: 22, FirstName: 'Mr. Nice12', LastName: '12', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '013', IdStud: 23, FirstName: 'Mr. Nice13', LastName: '13', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '014', IdStud: 24, FirstName: 'Mr. Nice14', LastName: '14', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '015', IdStud: 25, FirstName: 'Mr. Nice15', LastName: '15', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '016', IdStud: 26, FirstName: 'Mr. Nice16', LastName: '16', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '017', IdStud: 27, FirstName: 'Mr. Nice17', LastName: '17', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '018', IdStud: 28, FirstName: 'Mr. Nice18', LastName: '18', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '019', IdStud: 29, FirstName: 'Mr. Nice19', LastName: '19', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '020', IdStud: 30, FirstName: 'Mr. Nice20', LastName: '20', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '021', IdStud: 31, FirstName: 'Mr. Nice21', LastName: '21', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '022', IdStud: 32, FirstName: 'Mr. Nice22', LastName: '22', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '023', IdStud: 33, FirstName: 'Mr. Nice23', LastName: '23', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '024', IdStud: 34, FirstName: 'Mr. Nice24', LastName: '24', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '025', IdStud: 35, FirstName: 'Mr. Nice25', LastName: '25', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '026', IdStud: 36, FirstName: 'Mr. Nice26', LastName: '26', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '027', IdStud: 37, FirstName: 'Mr. Nice27', LastName: '27', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '028', IdStud: 38, FirstName: 'Mr. Nice28', LastName: '28', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' },
+  //     { Code: '029', IdStud: 39, FirstName: 'Mr. Nice29', LastName: '29', Email: '',  Red_br: 1, EnrDate: '', Address: '', Age: '' }
+  //   ];
+  //   tst = tstudents;
+  //   // return {tstudents};
+  //   const a = 1;
+  //   // return of (tstudents);
+  //   return of (tst);
+  // }
 
   getStudents5 (tdatabase: string) {
     let turl = `${this.customersUrlgetStudents}`;
@@ -455,60 +457,6 @@ export class DbService {
       );
   }
 
-  // // public fetchjson(): Observable<mojsajt[]>  {
-  // public fetchjson3(): Observable<Gmojsajt[]> {
-  //   const a = this.http.get<Gmojsajt[]>('../../assets/data/site.json');
-  //   // return this.http.get('../../assets/data/site.json');
-  //
-  //   // return this.http.get('../../assets/data/site.json')
-  //   //   .map(res => {
-  //   //     return res.json().results.map(item => {
-  //   //       return new Gmojsajt(
-  //   //       // item.trackName,
-  //   //         item.artistName,
-  //   //         item.trackViewUrl,
-  //   //         item.artworkUrl30,
-  //   //         item.artistId
-  //   //     );
-  //   //     });
-  //   //   });
-  //   let turl = '../../assets/data/site.json';
-  //
-  //   return this.http.get<Gmojsajt[]>(turl)
-  //     .pipe(
-  //       map(result => {
-  //         if (!result)  {
-  //               return result.map(item => {
-  //                 return new Gmojsajt(
-  //                   item.id,
-  //                   item.name,
-  //                   item.content,
-  //                   item.link
-  //               );
-  //
-  //         } else {}
-  //       })
-  //     );
-  // }
-  //
-
-
-
-  // public fetchjson2() {
-  //   this.http.get('../../assets/data/site.json').subscribe((res : any) => {
-  //     console.log(res);
-  //     //this.products = res;
-  //     alert (res);
-  //   });
-  // }
-  //
-  // fetchjson3 (): Observable<Gmojsajt[]> {
-  //   // let turl = `${this.customersUrlgetStudents}`;
-  //   // turl = turl + tdatabase;
-  //   // const a = this.http.get<Student[]>(turl);
-  //   let turl = '../../assets/data/site.json'
-  //   return this.http.get<Gmojsajt[]>(turl);
-  // }
 
   dajSajtJson(): Observable<Dummy[]> {
     let turl = `${this.UrlSajtJson}`;
@@ -517,32 +465,4 @@ export class DbService {
     return this.http.get<Dummy[]>(turl);
   }
 
-
-  // getPageStudents (tdatabase: string): Observable<Student[]> {
-  //   let turl = `${this.customersUrlgetStudents}`;
-  //   turl = turl + tdatabase;
-  //   const a = this.http.get<Student[]>(turl);
-  //   return this.http.get<Student[]>(turl);
-  // }
-
-  // const companyData = require('../assets/data/company.json');
-
-  // public getResults(page: Page): Observable<PagedData<Cstudent>> {
-  //
-  //   return of(companyData).pipe(map(data => this.getPagedData(page)));
-  //
-  // }
-
 }
-
-//
-// getHeroes() {
-//   return this.http.get<Hero[]>(this.heroesUrl)
-//     .pipe(map(data => data), catchError(this.handleError));
-// }
-//
-// getHero(id: number): Observable<Hero> {
-//   return this.getHeroes().pipe(
-//     map(heroes => heroes.find(hero => hero.id === id))
-//   );
-// }

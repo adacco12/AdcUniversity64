@@ -12,6 +12,10 @@
           <div class="dugmaddv">
             <div style="width: 100%">
               <div  style="float: left; text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="otvoridialog()" >Openn dialog</button>
+              </div>
+
+              <div  style="float: left;  margin-left:20px;  text-align:left;">
                 <button class="btn btn-primary tbtn" type="submit" (click)="otvori()" >Open</button>
               </div>
               <div  style="float: left; margin-left:20px; text-align:left;">
@@ -19,6 +23,10 @@
               </div>
               <div  style="float: left; margin-left:20px; text-align:left;">
                 <button class="btn btn-primary tbtn" type="submit" (click)="brisiRed()">Delete</button>
+              </div>
+
+              <div  style="float: left;  margin-left:20px;  text-align:left;">
+                <button class="btn btn-primary tbtn" type="submit" (click)="otvori2()" >Open2</button>
               </div>
 
               <div  style="float: right; text-align:right; margin-right: 15px;">
@@ -40,6 +48,7 @@
                    (onRowselect)="Rowselect($event)"
                    (onBindingcomplete)="Bindingcomplete($event)"
                    [height]="578"
+                   (dblclick)="otvori()"
           >
           </jqxGrid>
 
@@ -72,6 +81,7 @@
     <!--//////////-->
 
   </div>
+
 
 </div>
 
@@ -140,5 +150,39 @@
     <!--</label>-->
   </div>
 
+</jqxWindow>
+
+<jqxWindow [theme]="'material'" #studentWindow
+           [width]="1560"
+           [height]="680"
+           [resizable]="false"
+           [draggable]="false"
+           [cancelButton]="'.cancelButton'"
+           [isModal]="true"
+           [autoOpen]="false"
+           [modalOpacity]="0.3"
+           [animationType]="'slide'"
+           [title]= "'Message'"
+           style="position: fixed; left: 50%; top: 50%;">
+  <div class="messageHeaderStyles">
+    Messagw
+  </div>
+  <div class="messageContentStyles">
+    Dobar dan
+    <!--<label [(ngModel)]="tmessage">-->
+    <!--{{ tmessage }}-->
+
+    <!--<app-tstudent></app-tstudent>-->
+    <app-testdial (parentFun)='parentFun()'></app-testdial>
+
+    <div class="messageFooterStyles">
+      <button class="btn btn-primary tbtnm" (click)="closeDialog()" type="submit">OK</button>
+      &nbsp;
+      <button class="btn btn-primary tbtnm" (click)="parentFun()" type="submit">Call function</button>
+    </div>
+    <!--</label>-->
+  </div>
 
 </jqxWindow>
+
+

@@ -1,0 +1,150 @@
+.profile-home {
+  /*height: 800px;*/
+  padding: 1px;
+  margin: 0 auto;
+  /*border-style: solid;*/
+  /*border-width: medium;*/
+  /*background-color: gainsboro;*/
+  /*margin-top: 10px;*/
+}
+
+.tcol {
+  margin-bottom: 0px;
+  background-color: #f4f4f4;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-color: #d8d8d8;
+  /*margin-top:10px;*/
+  height: 300px;
+  padding: 3px;
+}
+
+.tdiv {
+  margin-bottom: 0px;
+  background-color: #f4f4f4;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-color: #d8d8d8;
+  /*margin-top:10px;*/
+  /*margin: 1px;*/
+  padding: 10px;
+}
+
+.dugmaddv{
+  padding-top: 0px;
+  font-size: medium;
+  height:50px;
+  /*background-color:orange;*/
+}
+
+
+.messageHeaderStyles {
+  height:20px;
+  font-size: medium;
+  font-weight:bold;
+  padding-top: 10px;
+}
+
+.messageContentStyles{
+  padding-top: 10px;
+  font-size: medium;
+  height:50px;
+  /*margin-left: 20px;*/
+  /*background-color:orange;*/
+}
+
+.messageFooterStyles {
+  margin-top: 30px;
+  /*background-color:orange;*/
+  text-align: center;
+
+}
+
+.tbtnm{
+  width: 120px;
+  /*margin-right: 20px;*/
+}
+
+.trow{
+  /*height: 700px;*/
+  height: 730px;
+  /*margin-right: 20px;*/
+}
+
+.tgdiv{
+  /*height: 680px;*/
+  height: 710px;
+}
+
+input[type=checkbox]
+{
+  /* Double-sized Checkboxes */
+  -ms-transform: scale(2); /* IE */
+  -moz-transform: scale(2); /* FF */
+  -webkit-transform: scale(2); /* Safari and Chrome */
+  -o-transform: scale(2); /* Opera */
+  padding: 10px;
+}
+
+/* Might want to wrap a span around your checkbox text */
+.checkboxtext
+{
+  /* Checkbox text */
+  font-size: 110%;
+  display: inline;
+}
+
+.twaitdiv{
+  position: absolute;
+  /*left: calc(100% - 0px);*/
+  /*top: 150px;*/
+  /*background-color: red;*/
+  z-index: 100;
+
+  /*position:fixed;*/
+  top: 50%;
+  left: 50%;
+  width:3em;
+  height:2em;
+  /*width:30em;*/
+  /*height:18em;*/
+  /*margin-top: -9em; !*set to a negative number 1/2 of your height*!*/
+  /*margin-left: -15em; !*set to a negative number 1/2 of your width*!*/
+  margin-top: -2em; /*set to a negative number 1/2 of your height*/
+  margin-left: -4em; /*set to a negative number 1/2 of your width*/
+  border: 1px solid #ccc;
+  background-color: #f3f3f3;
+
+  display:table-cell; vertical-align:middle; text-align:center;
+}
+
+.ngx-datatable.scroll-vertical {
+  height: 90vh;
+}
+
+.ngx-datatable01 {
+  border: 1px solid gray;
+  border-radius: 5px;
+  -webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.05);
+  border-color: #d8d8d8;
+
+}
+
+/*.ngx-datatable.material {*/
+/*.datatable-header {*/
+/*.datatable-header-cell {*/
+/*background-color: yellow;*/
+/*}*/
+/*}*/
+/*}*/
+
+.datatable-header-cell {
+  background-color: mediumblue;
+  color: white;
+  font-weight: bold;
+}

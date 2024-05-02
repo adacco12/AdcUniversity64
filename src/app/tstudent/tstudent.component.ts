@@ -47,7 +47,7 @@ export class TstudentComponent implements OnInit {
   public sstudent_firstname: string;
   public sstudent_lastname: string;
   public sstudent_code: string;
-  public sstudent_enrdate: string;
+  public sstudent_: string;
   public sstudent_email: string;
   public sstudent_address: string;
   public sstudent_age: string;
@@ -110,7 +110,6 @@ export class TstudentComponent implements OnInit {
     private http: HttpClient,
     private ts: MainService,
     public dekl: Dekl,
-    private dbmongoService: DbmongoService,
     public tdummy: Dummy,
     private imagecontrolService: ImagecontrolService,
     private ngxXml2jsonService: NgxXml2jsonService
@@ -119,7 +118,7 @@ export class TstudentComponent implements OnInit {
     this.sstudent_lastname = selectedStudent.LastName;
     this.sstudent_code = selectedStudent.Code;
     this.sstudent_id = selectedStudent.IdStud.toString();
-    this.sstudent_enrdate = selectedStudent.EnrDate;
+    // this.sstudent_enrdate = selectedStudent.EnrDate;
     this.sstudent_email = selectedStudent.Email;
     this.sstudent_address = selectedStudent.Address;
     // this.sstudent_age = selectedStudent.Age;
@@ -131,18 +130,18 @@ export class TstudentComponent implements OnInit {
 
     this.emll = this.sstudent_email;
     // if (typeof this.sstudent_enrdate  !== 'undefined') {
-    if (this.sstudent_enrdate  === null || this.sstudent_enrdate  === undefined || this.sstudent_enrdate.trim()  === '' || this.sstudent_enrdate  === 'undefined') {
-      this.ssdatum = {date: null};
-    } else {
-      // const tparseddate = Date.parse(this.sstudent_enrdate);
-      const tparseddate = this.sstudent_enrdate.substring(0, 10);
-      const tdat0 = new Date(tparseddate); // ISO format
-      const ty = tdat0.getFullYear();
-      const tm = tdat0.getMonth() + 1;
-      const td = tdat0.getDate();
+    // if (this.sstudent_enrdate  === null || this.sstudent_enrdate  === undefined || this.sstudent_enrdate.trim()  === '' || this.sstudent_enrdate  === 'undefined') {
+    //   this.ssdatum = {date: null};
+    // } else {
+    //   // const tparseddate = Date.parse(this.sstudent_enrdate);
+    //   const tparseddate = this.sstudent_enrdate.substring(0, 10);
+    //   const tdat0 = new Date(tparseddate); // ISO format
+    //   const ty = tdat0.getFullYear();
+    //   const tm = tdat0.getMonth() + 1;
+    //   const td = tdat0.getDate();
 
-      this.ssdatum = {date: {year: ty, month: tm, day: td}};
-    }
+    //   this.ssdatum = {date: {year: ty, month: tm, day: td}};
+    // }
 
     let tekIdStudStr = '';
     if (this.sstudent_id.length === 1) {tekIdStudStr = '00' + this.sstudent_id ; }
@@ -169,7 +168,7 @@ export class TstudentComponent implements OnInit {
   }
 
   potvrdi(): void {
-    if (this.globv.tIMEMDB === 'AdcUniversity') {
+    if (this.globv.tIMEMDB === 'AdcUniversity100') {
       this.tmessage = 'This is a demo database.';
       this.messageWindow.position('center');
       this.messageWindow.open();
@@ -229,7 +228,7 @@ export class TstudentComponent implements OnInit {
         const sdtt = this.ssdatum.date;
         // const ndtt = sdtt.replace(/\//g, '-')
         const ndtt = sdtt.year.toString() + '-' + sdtt.month.toString()  + '-' + sdtt.day.toString( );
-        this.sstudent_enrdate = ndtt;
+        // this.sstudent_enrdate = ndtt;
       }
     }
 
@@ -254,7 +253,7 @@ export class TstudentComponent implements OnInit {
     this.selectedStudent.FirstName = this.sstudent_firstname;
     this.selectedStudent.LastName = this.sstudent_lastname;
     this.selectedStudent.Code = this.sstudent_code;
-    this.selectedStudent.EnrDate = this.sstudent_enrdate;
+    // this.selectedStudent.EnrDate = this.sstudent_enrdate;
     this.selectedStudent.Email = this.sstudent_email;
     this.selectedStudent.Address = this.sstudent_address;
     // this.selectedStudent.Age = this.sstudent_age;
@@ -265,7 +264,7 @@ export class TstudentComponent implements OnInit {
   }
 
   upload(): void {
-    if (this.globv.tIMEMDB === 'AdcUniversity') {
+    if (this.globv.tIMEMDB === 'AdcUniversity100') {
       this.tmessage = 'This is a demo database.';
       this.messageWindow.position('center');
       this.messageWindow.open();

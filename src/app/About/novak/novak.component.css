@@ -1,0 +1,50 @@
+.tboth {
+  width: 100%;
+  /*width: 500px;*/
+}
+.leftc3 {
+  float:left;
+  width: 175px;
+  /*height: 300px;*/
+  /*background-color:red;*/
+}
+.rightc3 {
+  float:left;
+  width: calc(100% - 190px);
+  /*width: 160px;*/
+  /*height: 300px;*/
+  padding-left:10px;
+  /*background-color:green;*/
+}
+
+.Img3 {
+  width: 176px;
+  height: 182px;
+}
+
+.link {
+  text-decoration:none;
+  color: black;
+  float: left;
+  font-weight: bold;
+  font-size: 14px;
+  font-family:Arial;
+  /*cursor: pointer;*/
+}
+
+.link:hover {
+  text-decoration:underline;
+  border-color:#585858;
+  cursor:pointer;
+  color: blue;
+}
+
+.clicked {
+  margin-top:5px;
+  text-decoration:none;
+  color: darkgreen;
+  float: left;
+  font-weight: bold;
+  font-size: 15px;
+  font-family:Arial;
+}
